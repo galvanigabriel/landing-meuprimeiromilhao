@@ -103,6 +103,16 @@
     .chk{color:var(--green);font-size:16px;font-weight:700}
     .cnope{color:var(--muted2);font-size:16px}
     .cstar{color:var(--gold);font-size:14px}
+    .compare-box{background:var(--card);border:1px solid var(--border2);border-radius:16px;overflow:hidden}
+    .compare-header{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--card2);padding:14px 20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+    .compare-feat-col{text-align:left}
+    .compare-plan-col{text-align:center}
+    .premium-col{color:var(--gold)}
+    .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border2);align-items:center}
+    .compare-row:hover{background:rgba(255,255,255,0.015)}
+    .compare-feat{font-size:13px;color:var(--text);font-weight:500}
+    .compare-val{text-align:center;display:flex;align-items:center;justify-content:center}
+    .compare-prices{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 20px;border-top:2px solid var(--border);align-items:center;background:rgba(255,255,255,0.02)}
     .cta-sec{padding:100px 0}
     .cta-box{background:linear-gradient(135deg,rgba(212,175,77,0.08),rgba(98,199,138,0.06));border:1px solid var(--border);border-radius:28px;padding:80px 48px;text-align:center}
     .cta-box h2{font-size:60px;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px}
@@ -112,6 +122,7 @@
     footer{padding:48px 0;border-top:1px solid var(--border2);text-align:center;color:var(--muted2);font-size:13px}
     footer a{color:var(--muted);text-decoration:none}
     footer a:hover{color:var(--text)}
+    html,body{overflow-x:hidden;max-width:100%}
     @media(max-width:1024px){.planos{grid-template-columns:1fr 1fr}}
     @media(max-width:768px){
       .nav-links{display:none}
@@ -127,7 +138,8 @@
       .planos{grid-template-columns:1fr}
       .cta-box h2{font-size:36px}
       .cta-box{padding:48px 24px}
-      .ctable{overflow-x:auto}
+      .compare-feat{font-size:12px}
+      .compare-header,.compare-row,.compare-prices{padding:10px 14px}
     }
   </style>
 </head>
@@ -306,13 +318,14 @@
       </div>
 
       <div class="planos">
-        <div class="plano">
-          <div class="pnome">Básico Mensal</div>
-          <div class="priscado"></div>
-          <div class="pvalor">R$ 10</div>
-          <div class="pper">/mês · cobrado mensalmente</div>
-          <div class="ptrial"></div>
-          <a href="https://www.meuprimeiromilhao.app.br" class="btn-s pbtn">Assinar agora</a>
+
+        <div class="plano dest">
+          <div class="pnome">Premium Anual</div>
+          <div class="priscado">R$ 240/ano</div>
+          <div class="pvalor g">R$ 200</div>
+          <div class="pper">/ano · R$ 16,67/mês</div>
+          <div class="ptrial">✓ 30 dias grátis inclusos</div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p pbtn">Começar grátis</a>
           <hr class="pdiv">
           <ul class="pfeats">
             <li><span class="ck">✓</span> Dashboard completo</li>
@@ -320,9 +333,29 @@
             <li><span class="ck">✓</span> Patrimônio e fluxo</li>
             <li><span class="ck">✓</span> Conquistas e níveis</li>
             <li><span class="ck">✓</span> Trilha de conhecimento</li>
-            <li><span class="nx">✕</span> Assessor Financeiro IA</li>
-            <li><span class="nx">✕</span> Fórum da comunidade</li>
-            <li><span class="nx">✕</span> Newsletter exclusiva</li>
+            <li><span class="st">⭐</span> Assessor Financeiro IA</li>
+            <li><span class="st">⭐</span> Fórum da comunidade</li>
+            <li><span class="st">⭐</span> Newsletter exclusiva</li>
+          </ul>
+        </div>
+
+        <div class="plano">
+          <div class="pnome">Premium Mensal</div>
+          <div class="priscado"></div>
+          <div class="pvalor">R$ 20</div>
+          <div class="pper">/mês · cobrado mensalmente</div>
+          <div class="ptrial"></div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p pbtn">Assinar agora</a>
+          <hr class="pdiv">
+          <ul class="pfeats">
+            <li><span class="ck">✓</span> Dashboard completo</li>
+            <li><span class="ck">✓</span> Fechamento mensal</li>
+            <li><span class="ck">✓</span> Patrimônio e fluxo</li>
+            <li><span class="ck">✓</span> Conquistas e níveis</li>
+            <li><span class="ck">✓</span> Trilha de conhecimento</li>
+            <li><span class="st">⭐</span> Assessor Financeiro IA</li>
+            <li><span class="st">⭐</span> Fórum da comunidade</li>
+            <li><span class="st">⭐</span> Newsletter exclusiva</li>
           </ul>
         </div>
 
@@ -347,12 +380,12 @@
         </div>
 
         <div class="plano">
-          <div class="pnome">Premium Mensal</div>
+          <div class="pnome">Básico Mensal</div>
           <div class="priscado"></div>
-          <div class="pvalor">R$ 20</div>
+          <div class="pvalor">R$ 10</div>
           <div class="pper">/mês · cobrado mensalmente</div>
           <div class="ptrial"></div>
-          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p pbtn">Assinar agora</a>
+          <a href="https://www.meuprimeiromilhao.app.br" class="btn-s pbtn">Assinar agora</a>
           <hr class="pdiv">
           <ul class="pfeats">
             <li><span class="ck">✓</span> Dashboard completo</li>
@@ -360,58 +393,42 @@
             <li><span class="ck">✓</span> Patrimônio e fluxo</li>
             <li><span class="ck">✓</span> Conquistas e níveis</li>
             <li><span class="ck">✓</span> Trilha de conhecimento</li>
-            <li><span class="st">⭐</span> Assessor Financeiro IA</li>
-            <li><span class="st">⭐</span> Fórum da comunidade</li>
-            <li><span class="st">⭐</span> Newsletter exclusiva</li>
+            <li><span class="nx">✕</span> Assessor Financeiro IA</li>
+            <li><span class="nx">✕</span> Fórum da comunidade</li>
+            <li><span class="nx">✕</span> Newsletter exclusiva</li>
           </ul>
         </div>
 
-        <div class="plano dest">
-          <div class="pnome">Premium Anual</div>
-          <div class="priscado">R$ 240/ano</div>
-          <div class="pvalor g">R$ 200</div>
-          <div class="pper">/ano · R$ 16,67/mês</div>
-          <div class="ptrial">✓ 30 dias grátis inclusos</div>
-          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p pbtn">Começar grátis</a>
-          <hr class="pdiv">
-          <ul class="pfeats">
-            <li><span class="ck">✓</span> Dashboard completo</li>
-            <li><span class="ck">✓</span> Fechamento mensal</li>
-            <li><span class="ck">✓</span> Patrimônio e fluxo</li>
-            <li><span class="ck">✓</span> Conquistas e níveis</li>
-            <li><span class="ck">✓</span> Trilha de conhecimento</li>
-            <li><span class="st">⭐</span> Assessor Financeiro IA</li>
-            <li><span class="st">⭐</span> Fórum da comunidade</li>
-            <li><span class="st">⭐</span> Newsletter exclusiva</li>
-          </ul>
-        </div>
       </div>
 
-      <div class="ctable">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:36%">Funcionalidade</th>
-              <th>Básico Mensal</th>
-              <th>Básico Anual</th>
-              <th class="g">⭐ Premium Mensal</th>
-              <th class="g">⭐ Premium Anual</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Dashboard</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Fechamento mensal</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Patrimônio consolidado</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Fluxo de caixa</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Conquistas e níveis</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Trilha de conhecimento</td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="chk">✓</span></td></tr>
-            <tr><td>Assessor Financeiro com IA</td><td><span class="cnope">✕</span></td><td><span class="cnope">✕</span></td><td><span class="cstar">⭐</span></td><td><span class="cstar">⭐</span></td></tr>
-            <tr><td>Análises mensais com IA</td><td><span class="cnope">✕</span></td><td><span class="cnope">✕</span></td><td><span class="cstar">⭐</span></td><td><span class="cstar">⭐</span></td></tr>
-            <tr><td>Fórum da comunidade</td><td><span class="cnope">✕</span></td><td><span class="cnope">✕</span></td><td><span class="cstar">⭐</span></td><td><span class="cstar">⭐</span></td></tr>
-            <tr><td>Newsletter exclusiva</td><td><span class="cnope">✕</span></td><td><span class="cnope">✕</span></td><td><span class="cstar">⭐</span></td><td><span class="cstar">⭐</span></td></tr>
-            <tr><td>30 dias grátis</td><td><span class="cnope">✕</span></td><td><span class="chk">✓</span></td><td><span class="cnope">✕</span></td><td><span class="chk">✓</span></td></tr>
-          </tbody>
-        </table>
+      <!-- Comparativo Básico vs Premium — cabe em qualquer tela -->
+      <div class="compare-box">
+        <div class="compare-header">
+          <div class="compare-feat-col">Funcionalidade</div>
+          <div class="compare-plan-col">Básico</div>
+          <div class="compare-plan-col premium-col">⭐ Premium</div>
+        </div>
+        <div class="compare-row"><div class="compare-feat">Dashboard completo</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Fechamento mensal</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Patrimônio e fluxo</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Conquistas e níveis</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Trilha de conhecimento</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Assessor Financeiro IA</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Análises mensais com IA</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Fórum da comunidade</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
+        <div class="compare-row"><div class="compare-feat">Newsletter exclusiva</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
+        <div class="compare-row"><div class="compare-feat">30 dias grátis (plano anual)</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
+        <div class="compare-prices">
+          <div class="compare-feat" style="font-weight:700;color:var(--text);font-size:14px">Preço</div>
+          <div class="compare-val" style="flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:17px;font-weight:800;color:var(--text)">R$ 10/mês</span>
+            <span style="font-size:12px;color:var(--gold)">ou R$ 100/ano</span>
+          </div>
+          <div class="compare-val" style="flex-direction:column;gap:2px;align-items:center">
+            <span style="font-size:17px;font-weight:800;color:var(--text)">R$ 20/mês</span>
+            <span style="font-size:12px;color:var(--gold)">ou R$ 200/ano</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

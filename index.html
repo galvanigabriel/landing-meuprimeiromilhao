@@ -129,13 +129,26 @@
       .hero h1{font-size:46px;letter-spacing:-2px}
       .hero-sub{font-size:16px}
       .hero-trust{gap:16px}
+      .btn-p .arrow,.btn-s .arrow{display:none}
       .problema-inner{grid-template-columns:1fr;gap:40px;padding:36px}
       .problema h2{font-size:36px}
       .feat{grid-template-columns:1fr;gap:36px}
       .feat.rev{direction:ltr}
       .feat-txt h3{font-size:32px}
       .sec-hdr h2{font-size:36px}
-      .planos{grid-template-columns:1fr}
+      .planos{display:none}
+      .compare-box{order:-1}
+      .precos-mobile{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+      .plano-mini{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;text-align:center}
+      .plano-mini.dest{border-color:var(--border);background:rgba(212,175,77,0.05)}
+      .plano-mini-nome{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+      .plano-mini-preco{font-size:20px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--text);letter-spacing:-1px;line-height:1}
+      .plano-mini-preco.g{color:var(--gold)}
+      .plano-mini-per{font-size:10px;color:var(--muted);margin-top:2px;margin-bottom:4px}
+      .plano-mini-trial{font-size:10px;color:var(--green);font-weight:600;margin-bottom:10px;min-height:14px}
+      .plano-mini-btn{display:block;width:100%;padding:9px;border-radius:8px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;font-family:'DM Sans',sans-serif}
+      .plano-mini-btn.p{background:var(--gold);color:#111}
+      .plano-mini-btn.s{border:1px solid var(--border2);color:var(--text);background:transparent}
       .cta-box h2{font-size:36px}
       .cta-box{padding:48px 24px}
       .compare-feat{font-size:12px}
@@ -168,7 +181,7 @@
       <h1>Seu patrimônio.<br>Todo. Em um <span class="g">lugar só.</span></h1>
       <p class="hero-sub">O único app que consolida imóveis, bolsa, cripto, renda fixa e qualquer investimento — e te mostra exatamente quando você chega no seu <strong>primeiro milhão.</strong></p>
       <div class="hero-btns">
-        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Começar gratuitamente →</a>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Começar gratuitamente <span class="arrow">→</span></a>
         <a href="#funcionalidades" class="btn-s lg">Ver funcionalidades</a>
       </div>
       <div class="hero-trust">
@@ -428,6 +441,38 @@
             <span style="font-size:17px;font-weight:800;color:var(--text)">R$ 20/mês</span>
             <span style="font-size:12px;color:var(--gold)">ou R$ 200/ano</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Mini cards mobile: grade 2x2 -->
+      <div class="precos-mobile" style="display:none">
+        <div class="plano-mini dest">
+          <div class="plano-mini-nome">Premium Anual</div>
+          <div class="plano-mini-preco g">R$ 200</div>
+          <div class="plano-mini-per">/ano · R$ 16,67/mês</div>
+          <div class="plano-mini-trial">✓ 30 dias grátis</div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="plano-mini-btn p">Começar grátis</a>
+        </div>
+        <div class="plano-mini">
+          <div class="plano-mini-nome">Premium Mensal</div>
+          <div class="plano-mini-preco">R$ 20</div>
+          <div class="plano-mini-per">/mês</div>
+          <div class="plano-mini-trial"></div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="plano-mini-btn p">Assinar agora</a>
+        </div>
+        <div class="plano-mini">
+          <div class="plano-mini-nome">Básico Anual</div>
+          <div class="plano-mini-preco g">R$ 100</div>
+          <div class="plano-mini-per">/ano · R$ 8,33/mês</div>
+          <div class="plano-mini-trial">✓ 30 dias grátis</div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="plano-mini-btn s">Começar grátis</a>
+        </div>
+        <div class="plano-mini">
+          <div class="plano-mini-nome">Básico Mensal</div>
+          <div class="plano-mini-preco">R$ 10</div>
+          <div class="plano-mini-per">/mês</div>
+          <div class="plano-mini-trial"></div>
+          <a href="https://www.meuprimeiromilhao.app.br" class="plano-mini-btn s">Assinar agora</a>
         </div>
       </div>
     </div>

@@ -124,6 +124,16 @@
     footer a{color:var(--muted);text-decoration:none}
     footer a:hover{color:var(--text)}
     html,body{overflow-x:hidden;max-width:100%}
+    .faq-sec{padding:100px 0;border-top:1px solid var(--border2)}
+    .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+    .faq-item{border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:var(--card);transition:border-color .2s}
+    .faq-q{width:100%;background:none;border:none;color:var(--text);padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.4}
+    .faq-q:hover{background:rgba(255,255,255,0.02)}
+    .faq-icon{font-size:22px;color:var(--gold);flex-shrink:0;line-height:1;transition:transform .25s}
+    .faq-icon.rotated{transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-a.open{max-height:400px}
+    .faq-a p{padding:0 24px 22px;color:var(--muted);font-size:15px;line-height:1.8}
     @media(max-width:1024px){.planos{grid-template-columns:1fr 1fr}}
     @media(max-width:768px){
       .nav-links{display:none}
@@ -168,6 +178,7 @@
         <a href="#como-funciona">Como funciona</a>
         <a href="#funcionalidades">Funcionalidades</a>
         <a href="#precos">Preços</a>
+        <a href="#faq">FAQ</a>
       </div>
       <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Começar grátis</a>
     </nav>
@@ -179,16 +190,17 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="badge">📈 A jornada rumo ao seu primeiro milhão começa aqui</div>
-      <h1>Seu patrimônio.<br>Todo. Em um <span class="g">lugar só.</span></h1>
-      <p class="hero-sub">Do Tesouro à cripto, do imóvel à bolsa. Tudo junto, evoluindo rumo ao milhão.</p>
+      <div class="badge">💰 Construção de patrimônio, não controle de gastos</div>
+      <h1>O app que te mostra<br>quando você chega no <span class="g">primeiro milhão.</span></h1>
+      <p class="hero-sub">Consolide imóveis, B3, cripto e renda fixa em um só lugar. Veja seu patrimônio crescer mês a mês — e saiba exatamente <strong>quantos anos faltam pro milhão.</strong></p>
       <div class="hero-btns">
-        <a href="#funcionalidades" class="btn-s lg">Ver funcionalidades</a>
+        <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p lg">Começar grátis <span class="arrow">→</span></a>
+        <a href="#funcionalidades" class="btn-s lg">Ver como funciona</a>
       </div>
       <div class="hero-trust">
         <span>✅ 100% online, sem instalação</span>
         <span>🔒 Seus dados são seus</span>
-        <span>📊 Previsão do seu R$ 1M</span>
+        <span>📊 Previsão automática do R$ 1M</span>
         <span>🎯 30 dias grátis nos planos anuais</span>
       </div>
     </div>
@@ -479,6 +491,69 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq-sec" id="faq">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="eyebrow">Dúvidas frequentes</div>
+        <h2>Respostas diretas, <span>sem enrolação</span></h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Não tenho muito dinheiro ainda. Isso é pra mim?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Sim — e na verdade é exatamente por isso que você deveria começar agora. Quem já tem R$ 1M não precisa de ajuda pra chegar lá. O app foi feito pra quem está construindo patrimônio do zero, quer seja R$ 5 mil ou R$ 200 mil. Você registra o que tem hoje, acompanha mês a mês e vê claramente quando chega no próximo marco. A disciplina de acompanhar é o que separa quem acumula de quem não acumula.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Já uso planilha. Por que mudar?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Planilha funciona — mas as análises são básicas e você faz tudo na mão. No Meu Primeiro Milhão você tem previsão automática do milhão, gamificação pra manter consistência, análise com IA no fechamento mensal e newsletter exclusiva com análises de empresas para você avaliar e considerar na diversificação da sua carteira. Coisas que nenhuma planilha entrega. E se você já tem histórico, pode importar direto via Excel — em minutos está com tudo dentro do app sem perder nada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>R$ 10 ou R$ 20 por mês parece caro pra um app.</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Você gasta mais do que isso numa saída. A questão certa não é "R$ 10 é caro?" — é "quanto vale ter clareza sobre onde está o seu patrimônio e quando você vai ser livre financeiramente?" Se o app te ajudar a aumentar seu aporte em R$ 100 por mês, ele já pagou o ano inteiro no primeiro mês. E nos planos anuais você ainda tem 30 dias grátis pra testar sem pagar nada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Não me sinto seguro colocando meus dados financeiros num site.</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Você não coloca senhas de banco, CPF nem dados de acesso. O app funciona com valores declarados por você — assim como uma planilha, mas online. Você registra "tenho R$ 50k em Tesouro Direto", não conecta sua conta na corretora. Seus dados ficam no Supabase (infraestrutura usada por milhares de empresas), com autenticação segura. É tão seguro quanto qualquer app de produtividade que você já usa.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Como isso me ajuda a ficar rico de verdade?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>O app não investe por você — mas resolve o maior inimigo da acumulação: a falta de clareza e de consistência. Quando você vê seu patrimônio crescendo mês a mês, quando tem uma previsão de quando chega no milhão e quando desbloqueia conquistas por manter a consistência, você cria o hábito de investir. E é o hábito repetido por anos que gera riqueza — não o timing perfeito de mercado.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-sec">
     <div class="container">
@@ -501,5 +576,20 @@
   </div>
 </footer>
 
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  // fecha todos
+  document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-icon.rotated').forEach(i => i.classList.remove('rotated'));
+  // abre o clicado se estava fechado
+  if (!isOpen) {
+    answer.classList.add('open');
+    icon.classList.add('rotated');
+  }
+}
+</script>
 </body>
 </html>

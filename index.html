@@ -13,11 +13,11 @@
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg:#030805;--card:#08110b;--card2:#0c160e;--border:rgba(181,149,63,0.15);--border2:rgba(255,255,255,0.06);--gold:#d4af4d;--gold2:#f0cc6a;--green:#62c78a;--text:#f0f4f1;--muted:#7a8f82;--muted2:#556660}
     html{scroll-behavior:smooth;overflow-x:hidden}
-    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;padding-top:64px}
     h1,h2,h3,.logo{font-family:'Cabinet Grotesk',sans-serif}
     .container{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
     /* NAV */
-    header{padding:20px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(3,8,5,0.8);border-bottom:1px solid var(--border2)}
+    header{padding:20px 0;position:fixed;top:0;left:0;right:0;width:100%;z-index:100;backdrop-filter:blur(16px);background:rgba(3,8,5,0.8);border-bottom:1px solid var(--border2)}
     nav{display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:22px;font-weight:800;letter-spacing:-.5px}
     .logo span{color:var(--gold)}
@@ -32,15 +32,15 @@
     .btn-s:hover{border-color:var(--border);background:rgba(255,255,255,0.05)}
     .btn-s.lg{padding:16px 28px;font-size:15px;border-radius:12px}
     /* HERO */
-    .hero{padding:110px 0 90px;text-align:center;position:relative}
+    .hero{padding:60px 0 40px;text-align:center;position:relative}
     .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(212,175,77,0.06) 0%,transparent 70%);pointer-events:none}
-    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(212,175,77,0.07);padding:8px 18px;border-radius:999px;margin-bottom:36px;color:#e6d18f;font-size:13px;font-weight:500}
-    .hero h1{font-size:82px;line-height:1;letter-spacing:-3px;margin-bottom:28px;max-width:960px;margin-left:auto;margin-right:auto}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(212,175,77,0.07);padding:8px 18px;border-radius:999px;margin-bottom:24px;color:#e6d18f;font-size:13px;font-weight:500}
+    .hero h1{font-size:72px;line-height:1;letter-spacing:-3px;margin-bottom:20px;max-width:960px;margin-left:auto;margin-right:auto}
     .hero h1 .g{color:var(--green)}
     .hero h1 .gold{color:var(--gold)}
-    .hero-sub{font-size:19px;color:var(--muted);line-height:1.75;max-width:620px;margin:0 auto 44px}
+    .hero-sub{font-size:17px;color:var(--muted);line-height:1.7;max-width:620px;margin:0 auto 32px}
     .hero-sub strong{color:var(--text)}
-    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
     .hero-trust{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;color:var(--muted2);font-size:13px;font-weight:500}
     /* FUNDADOR */
     .fundador{padding:100px 0;border-top:1px solid var(--border2)}

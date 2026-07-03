@@ -4,18 +4,19 @@
   <script defer src="https://cdn.himetrica.com/tracker.js" data-api-key="hm_8641d09bfec093922725921e7b90c4c181a693f8e9643615"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Primeiro Milhão — Acompanhe seu patrimônio rumo à liberdade financeira</title>
-  <meta name="description" content="O único app que consolida todo seu patrimônio e te mostra quando você chega no seu primeiro milhão.">
+  <title>Meu Primeiro Milhão — O método de acumulação de patrimônio para pessoa física</title>
+  <meta name="description" content="Depois de 10 anos investindo e construindo uma das maiores startups da América Latina, desenvolvi o método mais simples de acumular patrimônio. Agora está no seu bolso.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg:#030805;--card:#08110b;--card2:#0c160e;--border:rgba(181,149,63,0.15);--border2:rgba(255,255,255,0.06);--gold:#d4af4d;--gold2:#f0cc6a;--green:#62c78a;--text:#f0f4f1;--muted:#7a8f82;--muted2:#556660}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;overflow-x:hidden}
     body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
     h1,h2,h3,.logo{font-family:'Cabinet Grotesk',sans-serif}
     .container{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+    /* NAV */
     header{padding:20px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(3,8,5,0.8);border-bottom:1px solid var(--border2)}
     nav{display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:22px;font-weight:800;letter-spacing:-.5px}
@@ -23,39 +24,68 @@
     .nav-links{display:flex;gap:32px;align-items:center}
     .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
     .nav-links a:hover{color:var(--text)}
+    /* BUTTONS */
     .btn-p{background:var(--gold);color:#111;text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:all .2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
     .btn-p:hover{background:var(--gold2);transform:translateY(-1px)}
     .btn-p.lg{padding:16px 28px;font-size:15px;border-radius:12px}
     .btn-s{border:1px solid var(--border2);background:rgba(255,255,255,0.03);color:var(--text);text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:all .2s;white-space:nowrap}
     .btn-s:hover{border-color:var(--border);background:rgba(255,255,255,0.05)}
     .btn-s.lg{padding:16px 28px;font-size:15px;border-radius:12px}
-    .hero{padding:100px 0 80px;text-align:center;position:relative}
-    .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(98,199,138,0.07) 0%,transparent 70%);pointer-events:none}
-    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(212,175,77,0.07);padding:8px 16px;border-radius:999px;margin-bottom:32px;color:#e6d18f;font-size:13px;font-weight:500}
-    .hero h1{font-size:80px;line-height:1;letter-spacing:-3px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+    /* HERO */
+    .hero{padding:110px 0 90px;text-align:center;position:relative}
+    .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(212,175,77,0.06) 0%,transparent 70%);pointer-events:none}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(212,175,77,0.07);padding:8px 18px;border-radius:999px;margin-bottom:36px;color:#e6d18f;font-size:13px;font-weight:500}
+    .hero h1{font-size:82px;line-height:1;letter-spacing:-3px;margin-bottom:28px;max-width:960px;margin-left:auto;margin-right:auto}
     .hero h1 .g{color:var(--green)}
-    .hero-sub{font-size:19px;color:var(--muted);line-height:1.75;max-width:640px;margin:0 auto 44px}
-    .hero-sub strong{color:var(--gold)}
-    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-    .hero-trust{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;color:var(--muted2);font-size:13px;font-weight:500;margin-bottom:72px}
-    .hero-img{border-radius:20px;border:1px solid var(--border);box-shadow:0 32px 100px rgba(0,0,0,0.6);overflow:hidden}
-    .hero-img img{width:100%;display:block}
-    .problema{padding:100px 0;border-top:1px solid var(--border2)}
-    .problema-inner{background:var(--card);border:1px solid var(--border2);border-radius:24px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .hero h1 .gold{color:var(--gold)}
+    .hero-sub{font-size:19px;color:var(--muted);line-height:1.75;max-width:620px;margin:0 auto 44px}
+    .hero-sub strong{color:var(--text)}
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+    .hero-trust{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;color:var(--muted2);font-size:13px;font-weight:500}
+    /* FUNDADOR */
+    .fundador{padding:100px 0;border-top:1px solid var(--border2)}
+    .fundador-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .fundador-txt .eyebrow{margin-bottom:20px}
+    .fundador-txt h2{font-size:48px;line-height:1.1;letter-spacing:-2px;margin-bottom:28px}
+    .fundador-txt h2 span{color:var(--gold)}
+    .fundador-txt p{color:var(--muted);font-size:17px;line-height:1.85;margin-bottom:18px}
+    .fundador-txt p strong{color:var(--text)}
+    .fundador-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:40px}
+    .f-quote{font-size:40px;color:var(--gold);line-height:1;margin-bottom:16px;font-family:'Cabinet Grotesk',sans-serif;font-weight:800}
+    .f-text{font-size:18px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:28px;font-weight:500}
+    .f-author{display:flex;align-items:center;gap:16px}
+    .f-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--green));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#111;flex-shrink:0}
+    .f-name{font-weight:700;font-size:15px;color:var(--text);margin-bottom:2px}
+    .f-role{font-size:13px;color:var(--muted)}
+    .f-role a{color:var(--gold);text-decoration:none}
+    .f-role a:hover{text-decoration:underline}
+    .credenciais{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+    .cred-item{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted)}
+    .cred-item strong{color:var(--text)}
+    .cred-icon{font-size:18px;flex-shrink:0}
+    /* MÉTODO */
+    .metodo{padding:100px 0;border-top:1px solid var(--border2)}
+    .metodo .sec-hdr{margin-bottom:72px}
+    .pilares{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:56px}
+    .pilar{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:40px;position:relative;overflow:hidden;transition:border-color .2s}
+    .pilar:hover{border-color:var(--border)}
+    .pilar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+    .pilar.p1::before{background:linear-gradient(90deg,var(--green),transparent)}
+    .pilar.p2::before{background:linear-gradient(90deg,var(--gold),transparent)}
+    .pilar-num{font-size:56px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;line-height:1;margin-bottom:20px;opacity:.15}
+    .pilar.p1 .pilar-num{color:var(--green)}
+    .pilar.p2 .pilar-num{color:var(--gold)}
+    .pilar-icon{font-size:36px;margin-bottom:16px}
+    .pilar h3{font-size:30px;letter-spacing:-1px;margin-bottom:14px}
+    .pilar.p1 h3 span{color:var(--green)}
+    .pilar.p2 h3 span{color:var(--gold)}
+    .pilar p{color:var(--muted);font-size:16px;line-height:1.8}
+    .metodo-cta{background:linear-gradient(135deg,rgba(98,199,138,0.06),rgba(212,175,77,0.06));border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center}
+    .metodo-cta p{color:var(--muted);font-size:17px;line-height:1.75;max-width:560px;margin:0 auto 28px}
+    .metodo-cta p strong{color:var(--text)}
+    /* FEATURES */
+    .features{padding:100px 0;border-top:1px solid var(--border2)}
     .eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
-    .problema h2{font-size:48px;line-height:1.1;letter-spacing:-2px;margin-bottom:24px}
-    .problema p{color:var(--muted);font-size:17px;line-height:1.8;margin-bottom:16px}
-    .app-list{display:flex;flex-direction:column;gap:12px}
-    .app-item{background:rgba(255,255,255,0.02);border:1px solid var(--border2);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px}
-    .app-item.nope{opacity:.5}
-    .app-item.win{border-color:rgba(98,199,138,0.3);background:rgba(98,199,138,0.05)}
-    .app-ico{font-size:20px;flex-shrink:0}
-    .app-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
-    .app-desc{font-size:12px;color:var(--muted)}
-    .app-tag{margin-left:auto;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;flex-shrink:0}
-    .app-tag.bad{background:rgba(224,85,85,.1);color:#e05555}
-    .app-tag.good{background:rgba(98,199,138,.12);color:var(--green)}
-    .features{padding:100px 0}
     .sec-hdr{text-align:center;max-width:760px;margin:0 auto 80px}
     .sec-hdr h2{font-size:54px;line-height:1.1;letter-spacing:-2px;margin-bottom:20px}
     .sec-hdr h2 span{color:var(--green)}
@@ -73,6 +103,7 @@
     .flist li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
     .feat-img{border-radius:16px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,0.5);overflow:hidden}
     .feat-img img{width:100%;display:block}
+    /* PREÇOS */
     .precos{padding:100px 0;border-top:1px solid var(--border2)}
     .planos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
     .plano{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;transition:border-color .2s;position:relative}
@@ -92,18 +123,7 @@
     .ck{color:var(--green);font-weight:700}
     .nx{color:var(--muted2)}
     .st{color:var(--gold)}
-    .ctable{background:var(--card);border:1px solid var(--border2);border-radius:16px;overflow:hidden}
-    .ctable table{width:100%;border-collapse:collapse;font-size:14px}
-    .ctable thead tr{background:var(--card2)}
-    .ctable th{padding:16px 20px;text-align:center;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
-    .ctable th:first-child{text-align:left}
-    .ctable th.g{color:var(--gold)}
-    .ctable td{padding:14px 20px;border-top:1px solid var(--border2);text-align:center;color:var(--muted)}
-    .ctable td:first-child{text-align:left;color:var(--text);font-weight:500}
-    .ctable tr:hover td{background:rgba(255,255,255,0.015)}
-    .chk{color:var(--green);font-size:16px;font-weight:700}
-    .cnope{color:var(--muted2);font-size:16px}
-    .cstar{color:var(--gold);font-size:14px}
+    /* COMPARATIVO */
     .compare-box{background:var(--card);border:1px solid var(--border2);border-radius:16px;overflow:hidden}
     .compare-header{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--card2);padding:14px 20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
     .compare-feat-col{text-align:left}
@@ -114,16 +134,10 @@
     .compare-feat{font-size:13px;color:var(--text);font-weight:500}
     .compare-val{text-align:center;display:flex;align-items:center;justify-content:center}
     .compare-prices{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 20px;border-top:2px solid var(--border);align-items:center;background:rgba(255,255,255,0.02)}
-    .cta-sec{padding:100px 0}
-    .cta-box{background:linear-gradient(135deg,rgba(212,175,77,0.08),rgba(98,199,138,0.06));border:1px solid var(--border);border-radius:28px;padding:80px 48px;text-align:center}
-    .cta-box h2{font-size:60px;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px}
-    .cta-box h2 span{color:var(--gold)}
-    .cta-box p{color:var(--muted);font-size:18px;line-height:1.75;max-width:640px;margin:0 auto 40px}
-    .cta-note{font-size:13px;color:var(--muted2);margin-top:20px}
-    footer{padding:48px 0;border-top:1px solid var(--border2);text-align:center;color:var(--muted2);font-size:13px}
-    footer a{color:var(--muted);text-decoration:none}
-    footer a:hover{color:var(--text)}
-    html,body{overflow-x:hidden;max-width:100%}
+    .chk{color:var(--green);font-size:16px;font-weight:700}
+    .cnope{color:var(--muted2);font-size:16px}
+    .cstar{color:var(--gold);font-size:14px}
+    /* FAQ */
     .faq-sec{padding:100px 0;border-top:1px solid var(--border2)}
     .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
     .faq-item{border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:var(--card);transition:border-color .2s}
@@ -134,20 +148,34 @@
     .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
     .faq-a.open{max-height:400px}
     .faq-a p{padding:0 24px 22px;color:var(--muted);font-size:15px;line-height:1.8}
-    @media(max-width:1024px){.planos{grid-template-columns:1fr 1fr}}
+    /* CTA */
+    .cta-sec{padding:100px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(212,175,77,0.08),rgba(98,199,138,0.06));border:1px solid var(--border);border-radius:28px;padding:80px 48px;text-align:center}
+    .cta-box h2{font-size:60px;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px}
+    .cta-box h2 span{color:var(--gold)}
+    .cta-box p{color:var(--muted);font-size:18px;line-height:1.75;max-width:640px;margin:0 auto 40px}
+    .cta-note{font-size:13px;color:var(--muted2);margin-top:20px}
+    footer{padding:48px 0;border-top:1px solid var(--border2);text-align:center;color:var(--muted2);font-size:13px}
+    footer a{color:var(--muted);text-decoration:none}
+    footer a:hover{color:var(--text)}
+    /* MOBILE */
+    @media(max-width:1024px){
+      .planos{grid-template-columns:1fr 1fr}
+      .pilares{grid-template-columns:1fr}
+      .fundador-inner{grid-template-columns:1fr;gap:48px}
+    }
     @media(max-width:768px){
       .nav-links{display:none}
       .hero h1{font-size:46px;letter-spacing:-2px}
       .hero-sub{font-size:16px}
       .hero-trust{gap:16px}
-      .btn-p .arrow,.btn-s .arrow{display:none}
       .btn-p.lg,.btn-s.lg{font-size:13px;padding:14px 20px}
-      .problema-inner{grid-template-columns:1fr;gap:40px;padding:36px}
-      .problema h2{font-size:36px}
       .feat{grid-template-columns:1fr;gap:36px}
       .feat.rev{direction:ltr}
       .feat-txt h3{font-size:32px}
       .sec-hdr h2{font-size:36px}
+      .fundador-txt h2{font-size:36px}
+      .pilar h3{font-size:24px}
       .planos{display:none}
       .compare-box{order:-1}
       .precos-mobile{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
@@ -175,7 +203,7 @@
     <nav>
       <div class="logo">Meu <span>Primeiro Milhão</span></div>
       <div class="nav-links">
-        <a href="#como-funciona">Como funciona</a>
+        <a href="#metodo">O Método</a>
         <a href="#funcionalidades">Funcionalidades</a>
         <a href="#precos">Preços</a>
         <a href="#faq">FAQ</a>
@@ -190,12 +218,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="badge">💰 Construção de patrimônio, não controle de gastos</div>
-      <h1>O app que te mostra<br>quando você chega no <span class="g">primeiro milhão.</span></h1>
-      <p class="hero-sub">Consolide imóveis, B3, cripto e renda fixa em um só lugar. Veja seu patrimônio crescer mês a mês — e saiba exatamente <strong>quantos anos faltam pro milhão.</strong></p>
+      <div class="badge">💡 O método que grandes empresas usam — na sua vida pessoal</div>
+      <h1>Trate suas finanças<br>como um <span class="gold">CEO</span> trata<br>as da <span class="g">empresa.</span></h1>
+      <p class="hero-sub">Esqueça o controle de gastos. As empresas medem <strong>fluxo de caixa e valuation</strong>. Você deveria medir o mesmo — só que na sua vida: <strong>fluxo de caixa e patrimônio</strong>.</p>
       <div class="hero-btns">
-        <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p lg">Começar grátis <span class="arrow">→</span></a>
-        <a href="#funcionalidades" class="btn-s lg">Ver como funciona</a>
+        <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p lg">Começar grátis <span>→</span></a>
+        <a href="#metodo" class="btn-s lg">Ver o método</a>
       </div>
       <div class="hero-trust">
         <span>✅ 100% online, sem instalação</span>
@@ -206,38 +234,64 @@
     </div>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="problema" id="como-funciona">
+  <!-- FUNDADOR -->
+  <section class="fundador" id="sobre">
     <div class="container">
-      <div class="problema-inner">
-        <div>
-          <div class="eyebrow">O problema</div>
-          <h2>Você investe — mas não sabe quanto tem de verdade.</h2>
-          <p>Apps de controle financeiro só mostram o que você gasta. Corretoras só mostram o que está na bolsa brasileira. Ninguém te dá o quadro completo.</p>
-          <p>E sem ver o todo, é impossível saber se você está ficando rico ou apenas sobrevivendo.</p>
-        </div>
-        <div class="app-list">
-          <div class="app-item nope">
-            <div class="app-ico">💳</div>
-            <div><div class="app-name">Apps de finanças</div><div class="app-desc">Mobills, Organizze, Guiabolso</div></div>
-            <div class="app-tag bad">Só gastos</div>
-          </div>
-          <div class="app-item nope">
-            <div class="app-ico">📈</div>
-            <div><div class="app-name">Apps de corretora</div><div class="app-desc">XP, Rico, Clear, B3</div></div>
-            <div class="app-tag bad">Só bolsa BR</div>
-          </div>
-          <div class="app-item nope">
-            <div class="app-ico">📊</div>
-            <div><div class="app-name">Planilhas</div><div class="app-desc">Excel, Google Sheets</div></div>
-            <div class="app-tag bad">Manual e chato</div>
-          </div>
-          <div class="app-item win">
-            <div class="app-ico">🏆</div>
-            <div><div class="app-name">Meu Primeiro Milhão</div><div class="app-desc">Tudo num lugar só, com previsão do R$ 1M</div></div>
-            <div class="app-tag good">Completo</div>
+      <div class="fundador-inner">
+        <div class="fundador-txt">
+          <div class="eyebrow">Por que isso funciona</div>
+          <h2>Aprendi com quem <span>chegou lá.</span></h2>
+          <p>Passei <strong>10 anos investindo</strong>, testando métodos e vendo o que funcionava e o que não funcionava na prática. Nesse caminho, sou <strong>sócio da Allu</strong> — a maior plataforma de assinatura de eletrônicos da América Latina.</p>
+          <p>De dentro de uma startup que escalou para ser referência no continente, aprendi como empresas que criam riqueza de verdade monitoram o que importa: <strong>fluxo de caixa e patrimônio.</strong> Nada mais.</p>
+          <p>Trouxe essa lógica para a minha vida pessoal. E foi ela que me fez chegar no <strong>primeiro milhão de patrimônio.</strong> O Meu Primeiro Milhão é o método e a ferramenta que eu gostaria de ter tido desde o início.</p>
+          <div class="credenciais">
+            <div class="cred-item"><span class="cred-icon">🏢</span><span>Sócio da Allu (<a href="https://allugator.com" target="_blank" style="color:var(--gold);text-decoration:none">allugator.com</a>) — maior plataforma de assinatura de eletrônicos da América Latina</span></div>
+            <div class="cred-item"><span class="cred-icon">📅</span><span><strong>10 anos</strong> construindo e refinando o método</span></div>
+            <div class="cred-item"><span class="cred-icon">🏆</span><span>Chegou ao <strong>primeiro milhão de patrimônio</strong> aplicando esse método</span></div>
           </div>
         </div>
+        <div class="fundador-card">
+          <div class="f-quote">"</div>
+          <div class="f-text">Uma empresa acompanha o seu fluxo de caixa para entender se está saudável. E o valuation para entender se está crescendo e gerando valor. Comecei a fazer o mesmo na minha vida — e tudo mudou.</div>
+          <div class="f-author">
+            <img src="data:image/jpeg;base64,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" alt="Gabriel Galvani" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0">
+            <div>
+              <div class="f-name">Gabriel Galvani</div>
+              <div class="f-role">Fundador do MPM · Sócio da Allu · <a href="https://allugator.com" target="_blank">allugator.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="metodo" id="metodo">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="eyebrow">O Método MPM</div>
+        <h2>Simples. Direto. <span>Funciona.</span></h2>
+        <p>Esqueça planilhas complicadas e categorias infinitas de gastos. O método tem dois pilares — os mesmos que toda grande empresa usa para criar valor.</p>
+      </div>
+
+      <div class="pilares">
+        <div class="pilar p1">
+          <div class="pilar-num">01</div>
+          <div class="pilar-icon">💸</div>
+          <h3>Fluxo de <span>Caixa</span></h3>
+          <p>Quanto entrou. Quanto saiu. Sobrou quanto? É a mesma lógica das grandes empresas — o que importa é o saldo final e o quanto você conseguiu investir, não os detalhes de cada gasto.</p>
+        </div>
+        <div class="pilar p2">
+          <div class="pilar-num">02</div>
+          <div class="pilar-icon">📈</div>
+          <h3>Patrimônio <span>Total</span></h3>
+          <p>O equivalente pessoal do valuation de uma empresa. Tudo que você tem em um número só — imóveis, B3, cripto, renda fixa, participações. Acompanhe o crescimento mês a mês e saiba exatamente quando você chega no primeiro milhão.</p>
+        </div>
+      </div>
+
+      <div class="metodo-cta">
+        <p>Você fecha o mês uma vez, registra seu patrimônio e fluxo de caixa — e o app <strong>te mostra sua evolução, sua projeção e quanto falta pro milhão.</strong> É isso. Sem complicação.</p>
+        <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p lg">Aplicar o método agora</a>
       </div>
     </div>
   </section>
@@ -247,8 +301,8 @@
     <div class="container">
       <div class="sec-hdr">
         <div class="eyebrow">Funcionalidades</div>
-        <h2>Tudo que você precisa para <span>construir riqueza</span></h2>
-        <p>Do controle mensal à conquista do primeiro milhão. Clareza, motivação e evolução em cada etapa da sua jornada.</p>
+        <h2>O método na <span>prática</span></h2>
+        <p>Cada tela do app foi construída para executar os dois pilares — sem ruído, sem distração.</p>
       </div>
 
       <div class="feat">
@@ -287,48 +341,48 @@
         <div class="feat-txt">
           <div class="eyebrow">Fechamento Mensal</div>
           <h3>Feche cada mês e <span>acompanhe sua evolução</span></h3>
-          <p>Uma vez por mês você registra tudo — aportes, entradas, saídas. O histórico se constrói sozinho e você vê sua riqueza crescer.</p>
+          <p>Uma vez por mês você registra tudo — aportes, entradas, saídas. O histórico se constrói sozinho e você vê sua riqueza crescer. O assessor IA analisa seus números e dá um diagnóstico do mês.</p>
           <ul class="flist">
             <li>Histórico completo de todos os meses registrados</li>
-            <li>Rascunho de mês — salve antes de fechar</li>
-            <li>Importação via Excel para histórico longo</li>
-            <li>Lembretes mensais para não quebrar o streak</li>
+            <li>Análise automática com IA ao fechar o mês</li>
+            <li>Score mensal calculado automaticamente</li>
+            <li>Comparativo mês a mês de evolução</li>
           </ul>
-          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Começar a registrar</a>
+          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Fechar meu primeiro mês</a>
         </div>
-        <div class="feat-img"><img src="fechamento.png" alt="Fechamento mensal"></div>
+        <div class="feat-img"><img src="fechamento.png" alt="Fechamento Mensal"></div>
       </div>
 
       <div class="feat rev">
         <div class="feat-txt">
           <div class="eyebrow">Fluxo de Caixa</div>
-          <h3>Entenda para onde <span>seu dinheiro vai</span></h3>
-          <p>Gráficos de entradas, saídas e saldo livre mensal. Analise por período e descubra onde está o espaço para aumentar seus aportes.</p>
+          <h3>Entradas, saídas e <span>o que sobrou</span></h3>
+          <p>Visão clara do seu fluxo mensal — sem complicar com categoria por categoria. O que importa é o saldo final e quanto você aportou.</p>
           <ul class="flist">
-            <li>Gráficos de entradas vs saídas por mês</li>
-            <li>Saldo livre mensal e média histórica</li>
-            <li>Taxa de poupança — quanto do que ganha você guarda</li>
-            <li>Filtros por período e por categoria</li>
+            <li>Balanço claro entre entradas e saídas</li>
+            <li>Taxa de aporte mensal calculada automaticamente</li>
+            <li>Histórico visual mês a mês</li>
+            <li>Tendências de evolução ao longo do tempo</li>
           </ul>
-          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Analisar meu fluxo</a>
+          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Ver meu fluxo</a>
         </div>
-        <div class="feat-img"><img src="fluxo.png" alt="Fluxo de caixa"></div>
+        <div class="feat-img"><img src="fluxo.png" alt="Fluxo de Caixa"></div>
       </div>
 
       <div class="feat">
         <div class="feat-txt">
           <div class="eyebrow">Gamificação</div>
-          <h3>Transforme disciplina em <span>obsessão</span></h3>
-          <p>36 conquistas desbloqueáveis, níveis de patrimônio e streak de consistência. Ficar rico nunca foi tão envolvente.</p>
+          <h3>Consistência que vira <span>hábito</span></h3>
+          <p>Conquistas, níveis e streaks para manter você comprometido com o método mês após mês. Porque é a consistência que gera riqueza — não o timing perfeito.</p>
           <ul class="flist">
-            <li>36 conquistas por consistência, patrimônio e aportes</li>
-            <li>Níveis: de Iniciante a Investidor Independente</li>
-            <li>Marcos reais — Top 40% BR, Top 20% BR, R$ 1M</li>
-            <li>Notificações de novas conquistas desbloqueadas</li>
+            <li>Sistema de conquistas desbloqueáveis por marcos</li>
+            <li>Níveis de evolução conforme você cresce</li>
+            <li>Streak de meses consecutivos sem falhar</li>
+            <li>Trilha de conhecimento sobre investimentos</li>
           </ul>
           <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p">Começar minha jornada</a>
         </div>
-        <div class="feat-img"><img src="conquistas.png" alt="Conquistas financeiras"></div>
+        <div class="feat-img"><img src="conquistas.png" alt="Gamificação"></div>
       </div>
 
     </div>
@@ -339,18 +393,17 @@
     <div class="container">
       <div class="sec-hdr">
         <div class="eyebrow">Planos</div>
-        <h2>Simples e <span>transparente</span></h2>
-        <p>Comece grátis por 30 dias nos planos anuais. Cancele quando quiser.</p>
+        <h2>Menos que um café <span>por semana</span></h2>
+        <p>Acesso ao método e à ferramenta que te levam ao primeiro milhão. Cancele quando quiser.</p>
       </div>
 
       <div class="planos">
-
         <div class="plano dest">
           <div class="pnome">Premium Anual</div>
           <div class="priscado">R$ 240/ano</div>
           <div class="pvalor g">R$ 200</div>
           <div class="pper">/ano · R$ 16,67/mês</div>
-          <div class="ptrial">✓ 30 dias grátis inclusos</div>
+          <div class="ptrial">✓ 30 dias grátis</div>
           <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p pbtn">Começar grátis</a>
           <hr class="pdiv">
           <ul class="pfeats">
@@ -371,7 +424,7 @@
           <div class="pvalor">R$ 20</div>
           <div class="pper">/mês · cobrado mensalmente</div>
           <div class="ptrial"></div>
-          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p pbtn">Assinar agora</a>
+          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-s pbtn">Assinar agora</a>
           <hr class="pdiv">
           <ul class="pfeats">
             <li><span class="ck">✓</span> Dashboard completo</li>
@@ -390,7 +443,7 @@
           <div class="priscado">R$ 120/ano</div>
           <div class="pvalor g">R$ 100</div>
           <div class="pper">/ano · R$ 8,33/mês</div>
-          <div class="ptrial">✓ 30 dias grátis inclusos</div>
+          <div class="ptrial">✓ 30 dias grátis</div>
           <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-s pbtn">Começar grátis</a>
           <hr class="pdiv">
           <ul class="pfeats">
@@ -424,10 +477,9 @@
             <li><span class="nx">✕</span> Newsletter exclusiva</li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Comparativo Básico vs Premium — cabe em qualquer tela -->
+      <!-- Comparativo Básico vs Premium -->
       <div class="compare-box">
         <div class="compare-header">
           <div class="compare-feat-col">Funcionalidade</div>
@@ -457,7 +509,7 @@
         </div>
       </div>
 
-      <!-- Mini cards mobile: grade 2x2 -->
+      <!-- Mini cards mobile -->
       <div class="precos-mobile" style="display:none">
         <div class="plano-mini dest">
           <div class="plano-mini-nome">Premium Anual</div>
@@ -506,7 +558,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Sim — e na verdade é exatamente por isso que você deveria começar agora. Quem já tem R$ 1M não precisa de ajuda pra chegar lá. O app foi feito pra quem está construindo patrimônio do zero, quer seja R$ 5 mil ou R$ 200 mil. Você registra o que tem hoje, acompanha mês a mês e vê claramente quando chega no próximo marco. A disciplina de acompanhar é o que separa quem acumula de quem não acumula.</p>
+            <p>Sim — e na verdade é exatamente por isso que você deveria começar agora. Quem já tem R$ 1M não precisa de ajuda pra chegar lá. O app foi feito pra quem está construindo patrimônio do zero, seja R$ 5 mil ou R$ 200 mil. Você registra o que tem hoje, acompanha mês a mês e vê claramente quando chega no próximo marco. A disciplina de acompanhar é o que separa quem acumula de quem não acumula.</p>
           </div>
         </div>
 
@@ -516,7 +568,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Planilha funciona — mas as análises são básicas e você faz tudo na mão. No Meu Primeiro Milhão você tem previsão automática do milhão, gamificação pra manter consistência, análise com IA no fechamento mensal e newsletter exclusiva com análises de empresas para você avaliar e considerar na diversificação da sua carteira. Coisas que nenhuma planilha entrega. E se você já tem histórico, pode importar direto via Excel — em minutos está com tudo dentro do app sem perder nada.</p>
+            <p>Planilha funciona — mas as análises são básicas e limitadas. No Meu Primeiro Milhão você tem previsão automática do milhão, gamificação pra manter consistência, análise com IA no fechamento mensal e newsletter exclusiva com análises de empresas para você avaliar e considerar na diversificação da sua carteira. Coisas que nenhuma planilha entrega. E se você já tem histórico, pode importar direto via Excel — em minutos está com tudo dentro do app sem perder nada.</p>
           </div>
         </div>
 
@@ -536,7 +588,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Você não coloca senhas de banco, CPF nem dados de acesso. O app funciona com valores declarados por você — assim como uma planilha, mas online. Você registra "tenho R$ 50k em Tesouro Direto", não conecta sua conta na corretora. Seus dados ficam no Supabase (infraestrutura usada por milhares de empresas), com autenticação segura. É tão seguro quanto qualquer app de produtividade que você já usa.</p>
+            <p>Você não coloca senhas de banco, CPF nem dados de acesso. O app funciona com valores declarados por você — assim como uma planilha, mas online. Você registra "tenho R$ 50k em Tesouro Direto", não conecta sua conta na corretora. Seus dados ficam em infraestrutura segura usada por milhares de empresas, com autenticação protegida. É tão seguro quanto qualquer app de produtividade que você já usa.</p>
           </div>
         </div>
 
@@ -546,7 +598,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>O app não investe por você — mas resolve o maior inimigo da acumulação: a falta de clareza e de consistência. Quando você vê seu patrimônio crescendo mês a mês, quando tem uma previsão de quando chega no milhão e quando desbloqueia conquistas por manter a consistência, você cria o hábito de investir. E é o hábito repetido por anos que gera riqueza — não o timing perfeito de mercado.</p>
+            <p>O app não investe por você — mas resolve o maior inimigo da acumulação: falta de clareza e de consistência. Quando você vê seu patrimônio crescendo mês a mês, tem uma previsão de quando chega no milhão e desbloqueia conquistas por manter a consistência, você cria o hábito de investir. E é o hábito repetido por anos que gera riqueza — não o timing perfeito de mercado.</p>
           </div>
         </div>
 
@@ -559,7 +611,7 @@
     <div class="container">
       <div class="cta-box">
         <h2>Seu primeiro milhão <span>começa hoje.</span></h2>
-        <p>Pare de adivinhar quanto você tem. Veja o quadro completo, entenda onde está e saiba exatamente quando chega lá.</p>
+        <p>Aplique o mesmo método que as maiores empresas usam para criar riqueza — na sua vida pessoal. Fluxo de caixa. Patrimônio. Consistência.</p>
         <div style="display:flex;justify-content:center">
           <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p lg">Começar gratuitamente</a>
         </div>
@@ -581,15 +633,14 @@ function toggleFaq(btn) {
   const answer = btn.nextElementSibling;
   const icon = btn.querySelector('.faq-icon');
   const isOpen = answer.classList.contains('open');
-  // fecha todos
   document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
   document.querySelectorAll('.faq-icon.rotated').forEach(i => i.classList.remove('rotated'));
-  // abre o clicado se estava fechado
   if (!isOpen) {
     answer.classList.add('open');
     icon.classList.add('rotated');
   }
 }
 </script>
+
 </body>
 </html>

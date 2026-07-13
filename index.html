@@ -146,20 +146,22 @@
     .calc-result-label{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-bottom:12px}
     .calc-result-big{font-size:56px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--gold);letter-spacing:-2px;line-height:1;margin-bottom:10px}
     .calc-result-sub{font-size:14px;color:var(--muted);line-height:1.6;min-height:20px}
-    .calc-capture{margin-top:28px;padding-top:28px;border-top:1px solid var(--border2);display:none}
-    .calc-capture.show{display:block}
+    .calc-form-note{font-size:12px;color:#e07a5f;min-height:16px;font-weight:500;text-align:center}
+    /* placeholder antes do calculo */
+    .calc-placeholder{text-align:center}
+    .calc-placeholder-icon{font-size:36px;margin-bottom:14px;opacity:.5}
+    .calc-placeholder p{font-size:14px;color:var(--muted2);line-height:1.7;max-width:240px;margin:0 auto}
+    /* reveal do resultado */
+    .calc-reveal{display:none;animation:fadeUp .45s ease}
+    .calc-reveal.show{display:block}
+    .calc-placeholder.hide{display:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .calc-capture{margin-top:28px;padding-top:28px;border-top:1px solid var(--border2)}
     .calc-capture-txt{font-size:15px;color:var(--text);line-height:1.6;margin-bottom:18px;font-weight:500}
-    .calc-email-row{display:flex;gap:8px}
-    .calc-email-row input{flex:1;background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;min-width:0}
-    .calc-email-row input:focus{border-color:var(--gold)}
-    .calc-email-row input::placeholder{color:var(--muted2)}
-    .calc-email-row .btn-p{white-space:nowrap;flex-shrink:0}
-    .calc-email-note{font-size:12px;color:var(--green);margin-top:10px;min-height:16px;font-weight:500}
+    .calc-cta{width:100%;justify-content:center}
     @media(max-width:860px){
       .calc-box{grid-template-columns:1fr;gap:32px;padding:32px 24px}
       .calc-result-big{font-size:44px}
-      .calc-email-row{flex-direction:column}
-      .calc-email-row .btn-p{width:100%;justify-content:center}
     }
     /* TOGGLE BILLING */
     .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px}
@@ -463,7 +465,14 @@
       </div>
 
       <div class="calc-box">
-        <div class="calc-inputs">
+        <!-- FORM -->
+        <div class="calc-inputs" id="calc-form">
+          <div class="calc-field">
+            <label for="calc-email">Seu melhor email</label>
+            <div class="calc-input-wrap">
+              <input type="email" id="calc-email" placeholder="seu@email.com" autocomplete="email">
+            </div>
+          </div>
           <div class="calc-field">
             <label for="calc-patrimonio">Patrimônio investido hoje</label>
             <div class="calc-input-wrap">
@@ -478,22 +487,27 @@
               <input type="text" id="calc-aporte" inputmode="numeric" placeholder="2.000" autocomplete="off">
             </div>
           </div>
-          <button class="btn-p lg calc-btn" onclick="calcularMilhao()">Calcular <span>→</span></button>
+          <button class="btn-p lg calc-btn" onclick="calcularMilhao()">Ver minha projeção <span>→</span></button>
+          <p class="calc-form-note" id="calc-erro"></p>
         </div>
 
+        <!-- RESULTADO -->
         <div class="calc-result" id="calc-result">
           <div class="calc-result-inner">
-            <div class="calc-result-label">Você chega no primeiro milhão em</div>
-            <div class="calc-result-big" id="calc-anos">—</div>
-            <div class="calc-result-sub" id="calc-detalhe"></div>
+            <div class="calc-placeholder" id="calc-placeholder">
+              <div class="calc-placeholder-icon">📈</div>
+              <p>Preencha os campos ao lado e descubra em quanto tempo você chega no primeiro milhão.</p>
+            </div>
 
-            <div class="calc-capture" id="calc-capture">
-              <p class="calc-capture-txt">Quer acompanhar esse patrimônio crescendo mês a mês, como um CEO acompanha uma empresa?</p>
-              <div class="calc-email-row">
-                <input type="email" id="calc-email" placeholder="seu@email.com" autocomplete="email">
-                <button class="btn-p" onclick="capturarEmail()">Começar agora</button>
+            <div class="calc-reveal" id="calc-reveal">
+              <div class="calc-result-label">Você chega no primeiro milhão em</div>
+              <div class="calc-result-big" id="calc-anos">—</div>
+              <div class="calc-result-sub" id="calc-detalhe"></div>
+
+              <div class="calc-capture">
+                <p class="calc-capture-txt">Quer acompanhar esse patrimônio crescendo mês a mês, como um CEO acompanha uma empresa?</p>
+                <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg calc-cta">Começar agora <span>→</span></a>
               </div>
-              <p class="calc-email-note" id="calc-email-note"></p>
             </div>
           </div>
         </div>
@@ -690,7 +704,6 @@ var TAXA_ANUAL = 0.12;
 var TAXA_MENSAL = Math.pow(1 + TAXA_ANUAL, 1/12) - 1;
 var META = 1000000;
 
-// Máscara de moeda nos inputs
 function mascaraMoeda(el) {
   var v = el.value.replace(/\D/g, '');
   if (!v) { el.value = ''; return; }
@@ -700,11 +713,13 @@ function mascaraMoeda(el) {
   var el = document.getElementById(id);
   if (el) {
     el.addEventListener('input', function() { mascaraMoeda(el); });
-    el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') calcularMilhao();
-    });
+    el.addEventListener('keydown', function(e) { if (e.key === 'Enter') calcularMilhao(); });
   }
 });
+var emailEl = document.getElementById('calc-email');
+if (emailEl) {
+  emailEl.addEventListener('keydown', function(e) { if (e.key === 'Enter') calcularMilhao(); });
+}
 
 function parseValor(id) {
   var raw = document.getElementById(id).value.replace(/\./g, '').replace(/,/g, '');
@@ -713,34 +728,52 @@ function parseValor(id) {
 }
 
 function calcularMilhao() {
+  var email = document.getElementById('calc-email').value.trim();
   var pv = parseValor('calc-patrimonio');
   var aporte = parseValor('calc-aporte');
+  var erro = document.getElementById('calc-erro');
+
+  // Validacao
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailOk) {
+    erro.textContent = 'Digite um email válido para ver sua projeção.';
+    document.getElementById('calc-email').focus();
+    return;
+  }
+  if (pv <= 0 && aporte <= 0) {
+    erro.textContent = 'Preencha ao menos o patrimônio ou o aporte mensal.';
+    return;
+  }
+  erro.textContent = '';
+
+  // Identify no Himetrica
+  if (window.himetrica) {
+    himetrica('identify', { email: email });
+  }
 
   var elAnos = document.getElementById('calc-anos');
   var elDet = document.getElementById('calc-detalhe');
-  var elCap = document.getElementById('calc-capture');
+  var elPlace = document.getElementById('calc-placeholder');
+  var elReveal = document.getElementById('calc-reveal');
 
-  if (pv <= 0 && aporte <= 0) {
-    elAnos.textContent = '—';
-    elDet.textContent = 'Preencha ao menos um dos campos acima.';
-    elCap.classList.remove('show');
-    return;
+  function revelar() {
+    elPlace.classList.add('hide');
+    elReveal.classList.add('show');
   }
 
-  // Já é milionário
+  // Ja e milionario
   if (pv >= META) {
     elAnos.textContent = 'Agora';
     elDet.textContent = 'Você já passou do primeiro milhão. Hora de definir a próxima meta.';
-    elCap.classList.add('show');
-    if (window.himetrica) himetrica('track', 'calculadora_usada', { ja_milionario: true });
+    revelar();
+    if (window.himetrica) himetrica('track', 'calculadora_usada', { email: email, ja_milionario: true });
     return;
   }
 
-  // Simulação mês a mês
+  // Simulacao mes a mes
   var saldo = pv;
   var meses = 0;
-  var LIMITE = 12 * 80; // 80 anos
-
+  var LIMITE = 12 * 80;
   while (saldo < META && meses < LIMITE) {
     saldo = saldo * (1 + TAXA_MENSAL) + aporte;
     meses++;
@@ -749,13 +782,13 @@ function calcularMilhao() {
   if (meses >= LIMITE) {
     elAnos.textContent = '80+ anos';
     elDet.textContent = 'Com esse aporte o milhão fica distante. Aumentar o aporte mensal muda tudo.';
-    elCap.classList.add('show');
+    revelar();
+    if (window.himetrica) himetrica('track', 'calculadora_usada', { email: email, inviavel: true });
     return;
   }
 
   var anos = Math.floor(meses / 12);
   var mesesRest = meses % 12;
-
   var txt;
   if (anos === 0) {
     txt = mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
@@ -764,7 +797,6 @@ function calcularMilhao() {
   } else {
     txt = anos + (anos === 1 ? ' ano' : ' anos') + ' e ' + mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
   }
-
   elAnos.textContent = txt;
 
   var totalAportado = pv + (aporte * meses);
@@ -777,39 +809,16 @@ function calcularMilhao() {
     elDet.textContent = 'Considerando 12% de rentabilidade ao ano.';
   }
 
-  elCap.classList.add('show');
+  revelar();
 
   if (window.himetrica) {
     himetrica('track', 'calculadora_usada', {
+      email: email,
       patrimonio: pv,
       aporte: aporte,
       meses_ate_milhao: meses
     });
   }
-}
-
-function capturarEmail() {
-  var email = document.getElementById('calc-email').value.trim();
-  var nota = document.getElementById('calc-email-note');
-
-  var valido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!valido) {
-    nota.style.color = '#e07a5f';
-    nota.textContent = 'Digite um email válido.';
-    return;
-  }
-
-  nota.style.color = 'var(--green)';
-  nota.textContent = 'Redirecionando...';
-
-  if (window.himetrica) {
-    himetrica('identify', { email: email });
-    himetrica('track', 'email_capturado_calculadora', { email: email });
-  }
-
-  setTimeout(function() {
-    window.location.href = 'https://www.meuprimeiromilhao.app.br';
-  }, 600);
 }
 </script>
 <script>

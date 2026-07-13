@@ -25,6 +25,12 @@
     .nav-links{display:flex;gap:32px;align-items:center}
     .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
     .nav-links a:hover{color:var(--text)}
+    .nav-cta{display:flex;align-items:center;gap:10px}
+    .btn-calc{display:inline-flex;align-items:center;gap:7px;text-decoration:none;padding:11px 18px;border-radius:10px;font-size:14px;font-weight:600;color:var(--gold2);border:1px solid var(--border);background:rgba(212,175,77,0.08);transition:all .2s;white-space:nowrap;position:relative;overflow:hidden}
+    .btn-calc::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(240,204,106,0.18),transparent);animation:calcShine 3.5s ease-in-out infinite}
+    @keyframes calcShine{0%,70%{left:-100%}100%{left:160%}}
+    .btn-calc:hover{background:rgba(212,175,77,0.16);border-color:var(--gold);color:var(--gold2)}
+    .btn-calc-icon{font-size:14px;line-height:1}
     /* BUTTONS */
     .btn-p{background:var(--gold);color:#111;text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:all .2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap}
     .btn-p:hover{background:var(--gold2);transform:translateY(-1px)}
@@ -106,7 +112,6 @@
     .feat-img img{width:100%;display:block}
     /* PREÇOS */
     .precos{padding:100px 0;border-top:1px solid var(--border2)}
-    .planos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
     .plano{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;transition:border-color .2s;position:relative}
     .plano:hover{border-color:var(--border)}
     .plano.dest{border-color:var(--border);background:rgba(212,175,77,0.05)}
@@ -124,6 +129,38 @@
     .ck{color:var(--green);font-weight:700}
     .nx{color:var(--muted2)}
     .st{color:var(--gold)}
+    /* CALCULADORA */
+    .calc-sec{padding:100px 0;border-top:1px solid var(--border2)}
+    .calc-box{max-width:900px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .calc-inputs{display:flex;flex-direction:column;gap:24px}
+    .calc-field{display:flex;flex-direction:column;gap:10px}
+    .calc-field label{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.3px}
+    .calc-input-wrap{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border2);border-radius:12px;padding:0 16px;transition:border-color .2s}
+    .calc-input-wrap:focus-within{border-color:var(--gold)}
+    .calc-prefix{color:var(--muted2);font-size:15px;font-weight:600;margin-right:8px}
+    .calc-input-wrap input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;padding:16px 0;width:100%}
+    .calc-input-wrap input::placeholder{color:var(--muted2);font-weight:500}
+    .calc-btn{width:100%;justify-content:center;margin-top:4px}
+    .calc-result{background:var(--bg);border:1px solid var(--border2);border-radius:16px;padding:36px 28px;min-height:100%;display:flex;align-items:center;justify-content:center;text-align:center}
+    .calc-result-inner{width:100%}
+    .calc-result-label{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-bottom:12px}
+    .calc-result-big{font-size:56px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--gold);letter-spacing:-2px;line-height:1;margin-bottom:10px}
+    .calc-result-sub{font-size:14px;color:var(--muted);line-height:1.6;min-height:20px}
+    .calc-capture{margin-top:28px;padding-top:28px;border-top:1px solid var(--border2);display:none}
+    .calc-capture.show{display:block}
+    .calc-capture-txt{font-size:15px;color:var(--text);line-height:1.6;margin-bottom:18px;font-weight:500}
+    .calc-email-row{display:flex;gap:8px}
+    .calc-email-row input{flex:1;background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;min-width:0}
+    .calc-email-row input:focus{border-color:var(--gold)}
+    .calc-email-row input::placeholder{color:var(--muted2)}
+    .calc-email-row .btn-p{white-space:nowrap;flex-shrink:0}
+    .calc-email-note{font-size:12px;color:var(--green);margin-top:10px;min-height:16px;font-weight:500}
+    @media(max-width:860px){
+      .calc-box{grid-template-columns:1fr;gap:32px;padding:32px 24px}
+      .calc-result-big{font-size:44px}
+      .calc-email-row{flex-direction:column}
+      .calc-email-row .btn-p{width:100%;justify-content:center}
+    }
     /* TOGGLE BILLING */
     .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px}
     .toggle-label{font-size:14px;font-weight:600;color:var(--muted)}
@@ -177,7 +214,6 @@
     footer a:hover{color:var(--text)}
     /* MOBILE */
     @media(max-width:1024px){
-      .planos{grid-template-columns:1fr 1fr}
       .pilares{grid-template-columns:1fr}
       .fundador-inner{grid-template-columns:1fr;gap:48px}
     }
@@ -193,19 +229,11 @@
       .sec-hdr h2{font-size:36px}
       .fundador-txt h2{font-size:36px}
       .pilar h3{font-size:24px}
-      .planos{display:none}
-      .compare-box{order:-1}
-      .precos-mobile{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
-      .plano-mini{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px;text-align:center}
-      .plano-mini.dest{border-color:var(--border);background:rgba(212,175,77,0.05)}
-      .plano-mini-nome{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-      .plano-mini-preco{font-size:20px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--text);letter-spacing:-1px;line-height:1}
-      .plano-mini-preco.g{color:var(--gold)}
-      .plano-mini-per{font-size:10px;color:var(--muted);margin-top:2px;margin-bottom:4px}
-      .plano-mini-trial{font-size:10px;color:var(--green);font-weight:600;margin-bottom:10px;min-height:14px}
-      .plano-mini-btn{display:block;width:100%;padding:9px;border-radius:8px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;font-family:'DM Sans',sans-serif}
-      .plano-mini-btn.p{background:var(--gold);color:#111}
-      .plano-mini-btn.s{border:1px solid var(--border2);color:var(--text);background:transparent}
+      .btn-calc{padding:10px 12px;font-size:13px}
+      .btn-calc span:not(.btn-calc-icon){display:none}
+      .btn-calc::before{content:'Calcular';display:inline}
+      .btn-p{padding:10px 14px;font-size:13px}
+      .nav-cta{gap:8px}
       .cta-box h2{font-size:36px}
       .cta-box{padding:48px 24px}
       .compare-feat{font-size:12px}
@@ -229,7 +257,13 @@
         <a href="#precos">Preços</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a href="https://www.meuprimeiromilhao.app.br" class="btn-p">Começar grátis</a>
+      <div class="nav-cta">
+        <a href="#calculadora" class="btn-calc">
+          <span class="btn-calc-icon">📈</span>
+          <span>Calcular meu milhão</span>
+        </a>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p">Começar grátis</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -419,6 +453,54 @@
     </div>
   </section>
 
+  <!-- CALCULADORA -->
+  <section class="calc-sec" id="calculadora">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="eyebrow">Calculadora</div>
+        <h2>Quando você chega no <span>primeiro milhão?</span></h2>
+        <p>Descubra em segundos. Rentabilidade considerada: 12% ao ano.</p>
+      </div>
+
+      <div class="calc-box">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label for="calc-patrimonio">Patrimônio investido hoje</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">R$</span>
+              <input type="text" id="calc-patrimonio" inputmode="numeric" placeholder="50.000" autocomplete="off">
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="calc-aporte">Quanto você investe por mês</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">R$</span>
+              <input type="text" id="calc-aporte" inputmode="numeric" placeholder="2.000" autocomplete="off">
+            </div>
+          </div>
+          <button class="btn-p lg calc-btn" onclick="calcularMilhao()">Calcular <span>→</span></button>
+        </div>
+
+        <div class="calc-result" id="calc-result">
+          <div class="calc-result-inner">
+            <div class="calc-result-label">Você chega no primeiro milhão em</div>
+            <div class="calc-result-big" id="calc-anos">—</div>
+            <div class="calc-result-sub" id="calc-detalhe"></div>
+
+            <div class="calc-capture" id="calc-capture">
+              <p class="calc-capture-txt">Quer acompanhar esse patrimônio crescendo mês a mês, como um CEO acompanha uma empresa?</p>
+              <div class="calc-email-row">
+                <input type="email" id="calc-email" placeholder="seu@email.com" autocomplete="email">
+                <button class="btn-p" onclick="capturarEmail()">Começar agora</button>
+              </div>
+              <p class="calc-email-note" id="calc-email-note"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PREÇOS -->
   <section class="precos" id="precos">
     <div class="container">
@@ -602,6 +684,134 @@
   </div>
 </footer>
 
+<script>
+// ─── CALCULADORA DO PRIMEIRO MILHÃO ───
+var TAXA_ANUAL = 0.12;
+var TAXA_MENSAL = Math.pow(1 + TAXA_ANUAL, 1/12) - 1;
+var META = 1000000;
+
+// Máscara de moeda nos inputs
+function mascaraMoeda(el) {
+  var v = el.value.replace(/\D/g, '');
+  if (!v) { el.value = ''; return; }
+  el.value = parseInt(v, 10).toLocaleString('pt-BR');
+}
+['calc-patrimonio', 'calc-aporte'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('input', function() { mascaraMoeda(el); });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') calcularMilhao();
+    });
+  }
+});
+
+function parseValor(id) {
+  var raw = document.getElementById(id).value.replace(/\./g, '').replace(/,/g, '');
+  var n = parseFloat(raw);
+  return isNaN(n) ? 0 : n;
+}
+
+function calcularMilhao() {
+  var pv = parseValor('calc-patrimonio');
+  var aporte = parseValor('calc-aporte');
+
+  var elAnos = document.getElementById('calc-anos');
+  var elDet = document.getElementById('calc-detalhe');
+  var elCap = document.getElementById('calc-capture');
+
+  if (pv <= 0 && aporte <= 0) {
+    elAnos.textContent = '—';
+    elDet.textContent = 'Preencha ao menos um dos campos acima.';
+    elCap.classList.remove('show');
+    return;
+  }
+
+  // Já é milionário
+  if (pv >= META) {
+    elAnos.textContent = 'Agora';
+    elDet.textContent = 'Você já passou do primeiro milhão. Hora de definir a próxima meta.';
+    elCap.classList.add('show');
+    if (window.himetrica) himetrica('track', 'calculadora_usada', { ja_milionario: true });
+    return;
+  }
+
+  // Simulação mês a mês
+  var saldo = pv;
+  var meses = 0;
+  var LIMITE = 12 * 80; // 80 anos
+
+  while (saldo < META && meses < LIMITE) {
+    saldo = saldo * (1 + TAXA_MENSAL) + aporte;
+    meses++;
+  }
+
+  if (meses >= LIMITE) {
+    elAnos.textContent = '80+ anos';
+    elDet.textContent = 'Com esse aporte o milhão fica distante. Aumentar o aporte mensal muda tudo.';
+    elCap.classList.add('show');
+    return;
+  }
+
+  var anos = Math.floor(meses / 12);
+  var mesesRest = meses % 12;
+
+  var txt;
+  if (anos === 0) {
+    txt = mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
+  } else if (mesesRest === 0) {
+    txt = anos + (anos === 1 ? ' ano' : ' anos');
+  } else {
+    txt = anos + (anos === 1 ? ' ano' : ' anos') + ' e ' + mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
+  }
+
+  elAnos.textContent = txt;
+
+  var totalAportado = pv + (aporte * meses);
+  var jurosGanhos = META - totalAportado;
+  var pctJuros = Math.round((jurosGanhos / META) * 100);
+
+  if (jurosGanhos > 0) {
+    elDet.textContent = 'Desse valor, R$ ' + Math.round(jurosGanhos).toLocaleString('pt-BR') + ' vem de juros compostos (' + pctJuros + '% do total).';
+  } else {
+    elDet.textContent = 'Considerando 12% de rentabilidade ao ano.';
+  }
+
+  elCap.classList.add('show');
+
+  if (window.himetrica) {
+    himetrica('track', 'calculadora_usada', {
+      patrimonio: pv,
+      aporte: aporte,
+      meses_ate_milhao: meses
+    });
+  }
+}
+
+function capturarEmail() {
+  var email = document.getElementById('calc-email').value.trim();
+  var nota = document.getElementById('calc-email-note');
+
+  var valido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!valido) {
+    nota.style.color = '#e07a5f';
+    nota.textContent = 'Digite um email válido.';
+    return;
+  }
+
+  nota.style.color = 'var(--green)';
+  nota.textContent = 'Redirecionando...';
+
+  if (window.himetrica) {
+    himetrica('identify', { email: email });
+    himetrica('track', 'email_capturado_calculadora', { email: email });
+  }
+
+  setTimeout(function() {
+    window.location.href = 'https://www.meuprimeiromilhao.app.br';
+  }, 600);
+}
+</script>
 <script>
 var isAnual = false;
 function toggleBilling() {

@@ -749,7 +749,7 @@ function calcularMilhao() {
   // Identify no Himetrica (blindado: nunca pode quebrar o calculo)
   try {
     if (window.himetrica && typeof window.himetrica.identify === 'function') {
-      window.himetrica.identify({ email: email });
+      window.himetrica.identify({ name: email, email: email });
     }
   } catch (err) {
     console.warn('himetrica identify falhou:', err);

@@ -487,7 +487,7 @@
               <input type="text" id="calc-aporte" inputmode="numeric" placeholder="2.000" autocomplete="off">
             </div>
           </div>
-          <button class="btn-p lg calc-btn" onclick="calcularMilhao()">Ver minha projeção <span>→</span></button>
+          <button type="button" class="btn-p lg calc-btn" id="calc-btn">Ver minha projeção <span>→</span></button>
           <p class="calc-form-note" id="calc-erro"></p>
         </div>
 
@@ -746,9 +746,13 @@ function calcularMilhao() {
   }
   erro.textContent = '';
 
-  // Identify no Himetrica
-  if (window.himetrica) {
-    himetrica('identify', { email: email });
+  // Identify no Himetrica (blindado: nunca pode quebrar o calculo)
+  try {
+    if (typeof window.himetrica === 'function') {
+      window.himetrica('identify', { email: email });
+    }
+  } catch (err) {
+    console.warn('himetrica identify falhou:', err);
   }
 
   var elAnos = document.getElementById('calc-anos');
@@ -766,7 +770,7 @@ function calcularMilhao() {
     elAnos.textContent = 'Agora';
     elDet.textContent = 'Você já passou do primeiro milhão. Hora de definir a próxima meta.';
     revelar();
-    if (window.himetrica) himetrica('track', 'calculadora_usada', { email: email, ja_milionario: true });
+    trackCalc({ email: email, ja_milionario: true });
     return;
   }
 
@@ -783,7 +787,7 @@ function calcularMilhao() {
     elAnos.textContent = '80+ anos';
     elDet.textContent = 'Com esse aporte o milhão fica distante. Aumentar o aporte mensal muda tudo.';
     revelar();
-    if (window.himetrica) himetrica('track', 'calculadora_usada', { email: email, inviavel: true });
+    trackCalc({ email: email, inviavel: true });
     return;
   }
 
@@ -811,15 +815,35 @@ function calcularMilhao() {
 
   revelar();
 
-  if (window.himetrica) {
-    himetrica('track', 'calculadora_usada', {
-      email: email,
-      patrimonio: pv,
-      aporte: aporte,
-      meses_ate_milhao: meses
-    });
+  trackCalc({
+    email: email,
+    patrimonio: pv,
+    aporte: aporte,
+    meses_ate_milhao: meses
+  });
+}
+
+// Track blindado: analytics nunca pode quebrar a calculadora
+function trackCalc(dados) {
+  try {
+    if (typeof window.himetrica === 'function') {
+      window.himetrica('track', 'calculadora_usada', dados);
+    }
+  } catch (err) {
+    console.warn('himetrica track falhou:', err);
   }
 }
+
+// Listener do botao (mais robusto que onclick inline)
+(function() {
+  var btn = document.getElementById('calc-btn');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      calcularMilhao();
+    });
+  }
+})();
 </script>
 <script>
 var isAnual = false;

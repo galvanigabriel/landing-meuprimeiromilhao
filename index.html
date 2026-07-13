@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <script defer src="https://cdn.himetrica.com/tracker.js" data-api-key="hm_8641d09bfec093922725921e7b90c4c181a693f8e9643615"></script>
+  <script defer data-api-key="hm_8641d09bfec093922725921e7b90c4c181a693f8e9643615" src="https://tracker.himetrica.com/tracker.js"></script>
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","xlvlrx1pp6");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -748,8 +748,8 @@ function calcularMilhao() {
 
   // Identify no Himetrica (blindado: nunca pode quebrar o calculo)
   try {
-    if (typeof window.himetrica === 'function') {
-      window.himetrica('identify', { email: email });
+    if (window.himetrica && typeof window.himetrica.identify === 'function') {
+      window.himetrica.identify({ email: email });
     }
   } catch (err) {
     console.warn('himetrica identify falhou:', err);
@@ -826,8 +826,8 @@ function calcularMilhao() {
 // Track blindado: analytics nunca pode quebrar a calculadora
 function trackCalc(dados) {
   try {
-    if (typeof window.himetrica === 'function') {
-      window.himetrica('track', 'calculadora_usada', dados);
+    if (window.himetrica && typeof window.himetrica.track === 'function') {
+      window.himetrica.track('calculadora_usada', dados);
     }
   } catch (err) {
     console.warn('himetrica track falhou:', err);

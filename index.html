@@ -141,11 +141,9 @@
     .calc-input-wrap input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;padding:16px 0;width:100%}
     .calc-input-wrap input::placeholder{color:var(--muted2);font-weight:500}
     .calc-btn{width:100%;justify-content:center;margin-top:4px}
+    .calc-fonte{font-size:11px;color:var(--muted2);text-align:center;line-height:1.5;margin-top:4px}
     .calc-result{background:var(--bg);border:1px solid var(--border2);border-radius:16px;padding:36px 28px;min-height:100%;display:flex;align-items:center;justify-content:center;text-align:center}
     .calc-result-inner{width:100%}
-    .calc-result-label{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-bottom:12px}
-    .calc-result-big{font-size:56px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--gold);letter-spacing:-2px;line-height:1;margin-bottom:10px}
-    .calc-result-sub{font-size:14px;color:var(--muted);line-height:1.6;min-height:20px}
     .calc-form-note{font-size:12px;color:#e07a5f;min-height:16px;font-weight:500;text-align:center}
     /* placeholder antes do calculo */
     .calc-placeholder{text-align:center}
@@ -156,12 +154,20 @@
     .calc-reveal.show{display:block}
     .calc-placeholder.hide{display:none}
     @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    /* ranking BR + mundo */
+    .calc-rank{display:flex;flex-direction:column;gap:20px}
+    .calc-rank-item{display:flex;align-items:center;gap:16px;text-align:left}
+    .calc-rank-flag{font-size:34px;line-height:1;flex-shrink:0}
+    .calc-rank-data{flex:1}
+    .calc-rank-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-bottom:2px}
+    .calc-rank-big{font-size:34px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--gold);letter-spacing:-1px;line-height:1.05}
+    .calc-rank-sub{font-size:13px;color:var(--muted);line-height:1.5;margin-top:3px}
     .calc-capture{margin-top:28px;padding-top:28px;border-top:1px solid var(--border2)}
     .calc-capture-txt{font-size:15px;color:var(--text);line-height:1.6;margin-bottom:18px;font-weight:500}
     .calc-cta{width:100%;justify-content:center}
     @media(max-width:860px){
       .calc-box{grid-template-columns:1fr;gap:32px;padding:32px 24px}
-      .calc-result-big{font-size:44px}
+      .calc-rank-big{font-size:30px}
     }
     /* TOGGLE BILLING */
     .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px}
@@ -275,23 +281,18 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="badge">💡 O método que grandes empresas usam, na sua vida pessoal</div>
-      <!-- HEADLINES: 4 opções para teste A/B. Ative uma por vez trocando o display:none -->
-      <!-- OPÇÃO 1 (atual): conceitual, enquadramento CEO — melhor para público que já te conhece -->
-      <h1 id="hl-1">Trate suas finanças<br>como um <span class="gold">CEO</span> trata<br>as de uma <span class="g">empresa.</span></h1>
+      <div class="badge">📊 Seu patrimônio está espalhado, e invisível</div>
+      <!-- HERO DE DOR (ativo): bate no problema antes de apresentar o método. -->
+      <!-- O enquadramento CEO/método foi movido para a segunda dobra (#metodo). -->
+      <h1 id="hl-dor">Você não faz ideia<br>de <span class="gold">quanto já acumulou.</span></h1>
 
-      <!-- OPÇÃO 2: número concreto + narrativa pessoal — melhor para cold traffic do X -->
-      <h1 id="hl-2" style="display:none">Em <span class="gold">10 anos</span> de investimento,<br>uma coisa separou quem acumulou<br>de quem ficou no <span class="g">mesmo lugar.</span></h1>
+      <!-- HEADLINES ANTIGAS (método na 1ª dobra) — guardadas para reverter se necessário -->
+      <!-- <h1 id="hl-1">Trate suas finanças<br>como um <span class="gold">CEO</span> trata<br>as de uma <span class="g">empresa.</span></h1> -->
 
-      <!-- OPÇÃO 3: resultado direto + credibilidade — mais direto ao ponto -->
-      <h1 id="hl-3" style="display:none">O método que me levou ao<br><span class="gold">primeiro milhão</span> em<br><span class="g">2 métricas simples.</span></h1>
-
-      <!-- OPÇÃO 4: pergunta provocativa — gera identificação imediata -->
-      <h1 id="hl-4" style="display:none">Você sabe quanto seu<br>patrimônio cresceu nos<br>últimos <span class="gold">12 meses?</span></h1>
-      <p class="hero-sub">Esqueça o controle de gastos. As empresas medem <strong>fluxo de caixa e valuation</strong>. Você deveria medir o mesmo, só que na sua vida: <strong>fluxo de caixa e patrimônio</strong>.</p>
+      <p class="hero-sub">Seu dinheiro está espalhado em banco, corretora, cripto, reserva, imóveis, aplicativos, e por aí vai. Você nunca vê o número total, não sabe se está crescendo ou parado, e não faz ideia de quando fica livre. Isso tem um custo: <strong>quem não acompanha, não chega lá.</strong></p>
       <div class="hero-btns">
-        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Começar grátis <span>→</span></a>
-        <a href="#metodo" class="btn-s lg">Ver o método</a>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Ver meu patrimônio real agora <span>→</span></a>
+        <a href="#metodo" class="btn-s lg">Como funciona</a>
       </div>
       <div class="hero-trust">
         <span>✅ 100% online, sem instalação</span>
@@ -338,7 +339,7 @@
       <div class="sec-hdr">
         <div class="eyebrow">O Método MPM</div>
         <h2>Simples. Direto. <span>Funciona.</span></h2>
-        <p>Esqueça planilhas complicadas e categorias infinitas de gastos. O método tem dois pilares: os mesmos que toda grande empresa usa para criar valor.</p>
+        <p>Trate suas finanças como um CEO trata as de uma empresa. Esqueça planilhas complicadas e categorias infinitas de gastos: olhe para o que realmente importa, <strong>fluxo de caixa e patrimônio.</strong> Os mesmos dois números que toda grande empresa acompanha para criar valor.</p>
       </div>
 
       <div class="pilares">
@@ -460,53 +461,56 @@
     <div class="container">
       <div class="sec-hdr">
         <div class="eyebrow">Calculadora</div>
-        <h2>Quando você chega no <span>primeiro milhão?</span></h2>
-        <p>Descubra em segundos. Rentabilidade considerada: 12% ao ano.</p>
+        <h2>Onde você está no <span>ranking de patrimônio?</span></h2>
+        <p>Digite quanto você tem investido hoje e descubra sua posição no Brasil e no mundo. Nada é salvo.</p>
       </div>
 
       <div class="calc-box">
         <!-- FORM -->
         <div class="calc-inputs" id="calc-form">
           <div class="calc-field">
-            <label for="calc-email">Seu melhor email</label>
-            <div class="calc-input-wrap">
-              <input type="email" id="calc-email" placeholder="seu@email.com" autocomplete="email">
-            </div>
-          </div>
-          <div class="calc-field">
-            <label for="calc-patrimonio">Patrimônio investido hoje</label>
+            <label for="calc-patrimonio">Seu patrimônio investido hoje</label>
             <div class="calc-input-wrap">
               <span class="calc-prefix">R$</span>
               <input type="text" id="calc-patrimonio" inputmode="numeric" placeholder="50.000" autocomplete="off">
             </div>
           </div>
-          <div class="calc-field">
-            <label for="calc-aporte">Quanto você investe por mês</label>
-            <div class="calc-input-wrap">
-              <span class="calc-prefix">R$</span>
-              <input type="text" id="calc-aporte" inputmode="numeric" placeholder="2.000" autocomplete="off">
-            </div>
-          </div>
-          <button type="button" class="btn-p lg calc-btn" id="calc-btn">Ver minha projeção <span>→</span></button>
+          <button type="button" class="btn-p lg calc-btn" id="calc-btn">Ver minha posição <span>→</span></button>
           <p class="calc-form-note" id="calc-erro"></p>
+          <p class="calc-fonte">Base: UBS Global Wealth Report 2025.</p>
         </div>
 
         <!-- RESULTADO -->
         <div class="calc-result" id="calc-result">
           <div class="calc-result-inner">
             <div class="calc-placeholder" id="calc-placeholder">
-              <div class="calc-placeholder-icon">📈</div>
-              <p>Preencha os campos ao lado e descubra em quanto tempo você chega no primeiro milhão.</p>
+              <div class="calc-placeholder-icon">🌎</div>
+              <p>Digite seu patrimônio ao lado e descubra sua posição no ranking de riqueza.</p>
             </div>
 
             <div class="calc-reveal" id="calc-reveal">
-              <div class="calc-result-label">Você chega no primeiro milhão em</div>
-              <div class="calc-result-big" id="calc-anos">—</div>
-              <div class="calc-result-sub" id="calc-detalhe"></div>
+              <div class="calc-rank">
+                <div class="calc-rank-item">
+                  <div class="calc-rank-flag">🇧🇷</div>
+                  <div class="calc-rank-data">
+                    <div class="calc-rank-label">No Brasil você está no</div>
+                    <div class="calc-rank-big" id="rank-br">—</div>
+                    <div class="calc-rank-sub" id="rank-br-sub"></div>
+                  </div>
+                </div>
+                <div class="calc-rank-item">
+                  <div class="calc-rank-flag">🌍</div>
+                  <div class="calc-rank-data">
+                    <div class="calc-rank-label">No mundo você está no</div>
+                    <div class="calc-rank-big" id="rank-wd">—</div>
+                    <div class="calc-rank-sub" id="rank-wd-sub"></div>
+                  </div>
+                </div>
+              </div>
 
               <div class="calc-capture">
-                <p class="calc-capture-txt">Quer acompanhar esse patrimônio crescendo mês a mês, como um CEO acompanha uma empresa?</p>
-                <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg calc-cta">Começar agora <span>→</span></a>
+                <p class="calc-capture-txt" id="calc-msg"></p>
+                <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg calc-cta">Acompanhar meu patrimônio <span>→</span></a>
               </div>
             </div>
           </div>
@@ -699,27 +703,32 @@
 </footer>
 
 <script>
-// ─── CALCULADORA DO PRIMEIRO MILHÃO ───
-var TAXA_ANUAL = 0.12;
-var TAXA_MENSAL = Math.pow(1 + TAXA_ANUAL, 1/12) - 1;
-var META = 1000000;
+// ─── CALCULADORA DE PERCENTIL DE PATRIMÔNIO ───
+// Base: UBS Global Wealth Report 2025. Câmbio de referência R$ 5,10.
+// Funções logísticas ajustadas aos pontos-âncora do UBS (patrimônio em R$ -> percentil superado).
+// p(x) = 100 / (1 + exp(-k * (log10(x) - x0)))
+var CURVA_BR = { k: 2.9436, x0: 4.4531 };   // Brasil: riqueza concentrada, curva íngreme
+var CURVA_WD = { k: 1.4514, x0: 4.5689 };   // Mundo: distribuição mais suave
+
+function percentilSuperado(valor, curva) {
+  if (valor <= 0) return 0;
+  var p = 100 / (1 + Math.exp(-curva.k * (Math.log10(valor) - curva.x0)));
+  // limitar entre 0,1 e 99,9 para nunca mostrar 0% ou 100%
+  return Math.max(0.1, Math.min(99.9, p));
+}
 
 function mascaraMoeda(el) {
   var v = el.value.replace(/\D/g, '');
   if (!v) { el.value = ''; return; }
   el.value = parseInt(v, 10).toLocaleString('pt-BR');
 }
-['calc-patrimonio', 'calc-aporte'].forEach(function(id) {
-  var el = document.getElementById(id);
+(function() {
+  var el = document.getElementById('calc-patrimonio');
   if (el) {
     el.addEventListener('input', function() { mascaraMoeda(el); });
-    el.addEventListener('keydown', function(e) { if (e.key === 'Enter') calcularMilhao(); });
+    el.addEventListener('keydown', function(e) { if (e.key === 'Enter') calcularPercentil(); });
   }
-});
-var emailEl = document.getElementById('calc-email');
-if (emailEl) {
-  emailEl.addEventListener('keydown', function(e) { if (e.key === 'Enter') calcularMilhao(); });
-}
+})();
 
 function parseValor(id) {
   var raw = document.getElementById(id).value.replace(/\./g, '').replace(/,/g, '');
@@ -727,120 +736,72 @@ function parseValor(id) {
   return isNaN(n) ? 0 : n;
 }
 
-function calcularMilhao() {
-  var email = document.getElementById('calc-email').value.trim();
+// Formata "top X%" — mostra 1 casa decimal só quando abaixo de 10%
+function formataTop(topPct) {
+  if (topPct >= 10) return 'top ' + Math.round(topPct) + '%';
+  if (topPct >= 1)  return 'top ' + topPct.toFixed(1).replace('.', ',') + '%';
+  return 'top ' + topPct.toFixed(1).replace('.', ',') + '%';
+}
+
+function calcularPercentil() {
   var pv = parseValor('calc-patrimonio');
-  var aporte = parseValor('calc-aporte');
   var erro = document.getElementById('calc-erro');
 
-  // Validacao
-  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!emailOk) {
-    erro.textContent = 'Digite um email válido para ver sua projeção.';
-    document.getElementById('calc-email').focus();
-    return;
-  }
-  if (pv <= 0 && aporte <= 0) {
-    erro.textContent = 'Preencha ao menos o patrimônio ou o aporte mensal.';
+  if (pv <= 0) {
+    erro.textContent = 'Digite um valor válido para ver sua posição.';
     return;
   }
   erro.textContent = '';
 
-  // Identify no Himetrica (blindado: nunca pode quebrar o calculo)
-  try {
-    if (window.himetrica && typeof window.himetrica.identify === 'function') {
-      window.himetrica.identify({ name: email, email: email });
-    }
-  } catch (err) {
-    console.warn('himetrica identify falhou:', err);
-  }
+  var pBr = percentilSuperado(pv, CURVA_BR);
+  var pWd = percentilSuperado(pv, CURVA_WD);
+  var topBr = 100 - pBr;
+  var topWd = 100 - pWd;
 
-  var elAnos = document.getElementById('calc-anos');
-  var elDet = document.getElementById('calc-detalhe');
-  var elPlace = document.getElementById('calc-placeholder');
-  var elReveal = document.getElementById('calc-reveal');
+  document.getElementById('rank-br').textContent = formataTop(topBr);
+  document.getElementById('rank-wd').textContent = formataTop(topWd);
+  document.getElementById('rank-br-sub').textContent = 'você tem mais que ' + Math.round(pBr) + '% dos brasileiros';
+  document.getElementById('rank-wd-sub').textContent = 'você tem mais que ' + Math.round(pWd) + '% do mundo';
 
-  function revelar() {
-    elPlace.classList.add('hide');
-    elReveal.classList.add('show');
-  }
-
-  // Ja e milionario
-  if (pv >= META) {
-    elAnos.textContent = 'Agora';
-    elDet.textContent = 'Você já passou do primeiro milhão. Hora de definir a próxima meta.';
-    revelar();
-    trackCalc({ email: email, ja_milionario: true });
-    return;
-  }
-
-  // Simulacao mes a mes
-  var saldo = pv;
-  var meses = 0;
-  var LIMITE = 12 * 80;
-  while (saldo < META && meses < LIMITE) {
-    saldo = saldo * (1 + TAXA_MENSAL) + aporte;
-    meses++;
-  }
-
-  if (meses >= LIMITE) {
-    elAnos.textContent = '80+ anos';
-    elDet.textContent = 'Com esse aporte o milhão fica distante. Aumentar o aporte mensal muda tudo.';
-    revelar();
-    trackCalc({ email: email, inviavel: true });
-    return;
-  }
-
-  var anos = Math.floor(meses / 12);
-  var mesesRest = meses % 12;
-  var txt;
-  if (anos === 0) {
-    txt = mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
-  } else if (mesesRest === 0) {
-    txt = anos + (anos === 1 ? ' ano' : ' anos');
+  // Mensagem contextual honesta (número cru, sem suavizar)
+  var msg;
+  if (topBr <= 1) {
+    msg = 'Você está no topo da pirâmide brasileira. O desafio agora é preservar e fazer render.';
+  } else if (topBr <= 5) {
+    msg = 'Você está entre os mais ricos do Brasil. Consistência daqui pra frente é o que separa você do próximo degrau.';
+  } else if (topBr <= 20) {
+    msg = 'Você está acima da média, mas ainda há um caminho longo até o topo. Acompanhar de perto acelera a jornada.';
+  } else if (topBr <= 50) {
+    msg = 'Você está na metade de cima, mas longe de onde quer chegar. Quem acompanha o patrimônio de perto sobe mais rápido.';
   } else {
-    txt = anos + (anos === 1 ? ' ano' : ' anos') + ' e ' + mesesRest + (mesesRest === 1 ? ' mês' : ' meses');
+    msg = 'Você está no começo da jornada. É exatamente aqui que acompanhar cada real investido faz a maior diferença.';
   }
-  elAnos.textContent = txt;
+  document.getElementById('calc-msg').textContent = msg;
 
-  var totalAportado = pv + (aporte * meses);
-  var jurosGanhos = META - totalAportado;
-  var pctJuros = Math.round((jurosGanhos / META) * 100);
+  document.getElementById('calc-placeholder').classList.add('hide');
+  document.getElementById('calc-reveal').classList.add('show');
 
-  if (jurosGanhos > 0) {
-    elDet.textContent = 'Desse valor, R$ ' + Math.round(jurosGanhos).toLocaleString('pt-BR') + ' vem de juros compostos (' + pctJuros + '% do total).';
-  } else {
-    elDet.textContent = 'Considerando 12% de rentabilidade ao ano.';
-  }
-
-  revelar();
-
-  trackCalc({
-    email: email,
-    patrimonio: pv,
-    aporte: aporte,
-    meses_ate_milhao: meses
-  });
+  trackCalc({ patrimonio: pv, top_brasil: Math.round(topBr * 10) / 10, top_mundo: Math.round(topWd * 10) / 10 });
 }
 
 // Track blindado: analytics nunca pode quebrar a calculadora
 function trackCalc(dados) {
   try {
     if (window.himetrica && typeof window.himetrica.track === 'function') {
-      window.himetrica.track('calculadora_usada', dados);
+      window.himetrica.track('calculadora_percentil', dados);
     }
   } catch (err) {
     console.warn('himetrica track falhou:', err);
   }
 }
 
-// Listener do botao (mais robusto que onclick inline)
+// Listener do botao
 (function() {
   var btn = document.getElementById('calc-btn');
   if (btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      calcularMilhao();
+      calcularPercentil();
     });
   }
 })();

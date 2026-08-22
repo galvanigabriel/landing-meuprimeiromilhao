@@ -169,6 +169,19 @@
       .calc-box{grid-template-columns:1fr;gap:32px;padding:32px 24px}
       .calc-rank-big{font-size:30px}
     }
+    /* SEÇÃO GRÁTIS */
+    .gratis-box{max-width:480px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:44px 36px;text-align:center;position:relative}
+    .gratis-box::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(212,175,77,0.5),transparent 50%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .gratis-price{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:8px}
+    .gratis-riscado{font-size:22px;color:var(--muted2);text-decoration:line-through;font-weight:600}
+    .gratis-valor{font-size:64px;font-weight:800;font-family:'Cabinet Grotesk',sans-serif;color:var(--gold);letter-spacing:-2px;line-height:1}
+    .gratis-tag{font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
+    .gratis-feats{list-style:none;text-align:left;margin:0 auto 32px;max-width:340px;display:flex;flex-direction:column;gap:14px}
+    .gratis-feats li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text);line-height:1.4}
+    .gratis-feats .ck{color:var(--green);font-weight:800;flex-shrink:0}
+    .gratis-cta{width:100%;justify-content:center}
+    .gratis-note{font-size:13px;color:var(--muted);margin-top:14px}
+    @media(max-width:600px){.gratis-box{padding:36px 24px}.gratis-valor{font-size:52px}}
     /* TOGGLE BILLING */
     .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px}
     .toggle-label{font-size:14px;font-weight:600;color:var(--muted)}
@@ -262,7 +275,6 @@
       <div class="nav-links">
         <a href="#metodo">O Método</a>
         <a href="#funcionalidades">Funcionalidades</a>
-        <a href="#precos">Preços</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="nav-cta">
@@ -270,7 +282,7 @@
           <span class="btn-calc-icon">📈</span>
           <span>Calcular meu milhão</span>
         </a>
-        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p">Começar grátis</a>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p">Criar conta grátis</a>
       </div>
     </nav>
   </div>
@@ -291,14 +303,14 @@
 
       <p class="hero-sub">Seu dinheiro está espalhado em banco, corretora, cripto, reserva, imóveis, aplicativos, e por aí vai. Você nunca vê o número total, não sabe se está crescendo ou parado, e não faz ideia de quando fica livre. Isso tem um custo: <strong>quem não acompanha, não chega lá.</strong></p>
       <div class="hero-btns">
-        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Ver meu patrimônio real agora <span>→</span></a>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Criar conta grátis <span>→</span></a>
         <a href="#metodo" class="btn-s lg">Como funciona</a>
       </div>
       <div class="hero-trust">
         <span>✅ 100% online, sem instalação</span>
         <span>🔒 Seus dados são seus</span>
         <span>📊 Previsão automática do R$ 1M</span>
-        <span>🎯 30 dias grátis nos planos anuais</span>
+        <span>🎁 Grátis durante o lançamento</span>
       </div>
     </div>
   </section>
@@ -520,100 +532,31 @@
   </section>
 
   <!-- PREÇOS -->
-  <section class="precos" id="precos">
+  <!-- GRÁTIS -->
+  <section class="precos" id="gratis">
     <div class="container">
       <div class="sec-hdr">
-        <div class="eyebrow">Planos</div>
-        <h2>Menos que um café <span>por semana</span></h2>
-        <p>Acesso ao método e à ferramenta que te levam ao primeiro milhão. Cancele quando quiser.</p>
+        <div class="eyebrow">Grátis durante o lançamento</div>
+        <h2>É de graça. <span>Sem pegadinha.</span></h2>
+        <p>Pense nele como a sua planilha, só que turbinada: patrimônio consolidado, fluxo de caixa e previsão do primeiro milhão. Tudo liberado, sem cartão, sem plano.</p>
       </div>
 
-      <!-- Toggle mensal/anual -->
-      <div class="toggle-wrap">
-        <span class="toggle-label" id="lbl-mensal">Mensal</span>
-        <button class="toggle-btn" id="billing-toggle" onclick="toggleBilling()" aria-pressed="false">
-          <span class="toggle-knob"></span>
-        </button>
-        <span class="toggle-label" id="lbl-anual">Anual <span class="toggle-badge">30 dias grátis</span></span>
+      <div class="gratis-box">
+        <div class="gratis-price">
+          <span class="gratis-riscado">R$ 20/mês</span>
+          <span class="gratis-valor">R$ 0</span>
+        </div>
+        <p class="gratis-tag">Acesso completo enquanto durar o lançamento</p>
+        <ul class="gratis-feats">
+          <li><span class="ck">✓</span> Patrimônio consolidado em um só lugar</li>
+          <li><span class="ck">✓</span> Fluxo de caixa mês a mês</li>
+          <li><span class="ck">✓</span> Previsão automática do primeiro milhão</li>
+          <li><span class="ck">✓</span> Conquistas e níveis pra manter a consistência</li>
+          <li><span class="ck">✓</span> Trilha de conhecimento</li>
+        </ul>
+        <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg gratis-cta">Criar conta grátis <span>→</span></a>
+        <p class="gratis-note">Leva 1 minuto. Só precisa de um email.</p>
       </div>
-
-      <!-- 2 cards -->
-      <div class="planos2">
-        <!-- BÁSICO -->
-        <div class="plano2 dest">
-          <div class="plano2-badge">MAIS POPULAR</div>
-          <div class="pnome">Básico</div>
-          <div class="priscado" id="basico-riscado"></div>
-          <div class="pvalor" id="basico-valor">R$ 10</div>
-          <div class="pper" id="basico-per">/mês · cobrado mensalmente</div>
-          <div class="ptrial" id="basico-trial"></div>
-          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-p pbtn" id="basico-btn">Assinar Básico</a>
-          <hr class="pdiv">
-          <ul class="pfeats">
-            <li><span class="ck">✓</span> Dashboard completo</li>
-            <li><span class="ck">✓</span> Fechamento mensal</li>
-            <li><span class="ck">✓</span> Patrimônio e fluxo</li>
-            <li><span class="ck">✓</span> Conquistas e níveis</li>
-            <li><span class="ck">✓</span> Trilha de conhecimento</li>
-            <li><span class="nx">✕</span> Assessor Financeiro IA</li>
-            <li><span class="nx">✕</span> Fórum da comunidade</li>
-            <li><span class="nx">✕</span> Newsletter exclusiva</li>
-          </ul>
-        </div>
-
-        <!-- PREMIUM -->
-        <div class="plano2">
-          <div class="pnome">Premium</div>
-          <div class="priscado" id="premium-riscado"></div>
-          <div class="pvalor" id="premium-valor">R$ 20</div>
-          <div class="pper" id="premium-per">/mês · cobrado mensalmente</div>
-          <div class="ptrial" id="premium-trial"></div>
-          <a href="https://www.meuprimeiromilhao.app.br?ref=pricing" class="btn-s pbtn" id="premium-btn">Assinar Premium</a>
-          <hr class="pdiv">
-          <ul class="pfeats">
-            <li><span class="ck">✓</span> Dashboard completo</li>
-            <li><span class="ck">✓</span> Fechamento mensal</li>
-            <li><span class="ck">✓</span> Patrimônio e fluxo</li>
-            <li><span class="ck">✓</span> Conquistas e níveis</li>
-            <li><span class="ck">✓</span> Trilha de conhecimento</li>
-            <li><span class="st">⭐</span> Assessor Financeiro IA</li>
-            <li><span class="st">⭐</span> Fórum da comunidade</li>
-            <li><span class="st">⭐</span> Newsletter exclusiva</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Comparativo Básico vs Premium -->
-      <div class="compare-box">
-        <div class="compare-header">
-          <div class="compare-feat-col">Funcionalidade</div>
-          <div class="compare-plan-col">Básico</div>
-          <div class="compare-plan-col premium-col">⭐ Premium</div>
-        </div>
-        <div class="compare-row"><div class="compare-feat">Dashboard completo</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Fechamento mensal</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Patrimônio e fluxo</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Conquistas e níveis</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Trilha de conhecimento</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Assessor Financeiro IA</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Análises mensais com IA</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Fórum da comunidade</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
-        <div class="compare-row"><div class="compare-feat">Newsletter exclusiva</div><div class="compare-val"><span class="cnope">✕</span></div><div class="compare-val"><span class="cstar">⭐</span></div></div>
-        <div class="compare-row"><div class="compare-feat">30 dias grátis (plano anual)</div><div class="compare-val"><span class="chk">✓</span></div><div class="compare-val"><span class="chk">✓</span></div></div>
-        <div class="compare-prices">
-          <div class="compare-feat" style="font-weight:700;color:var(--text);font-size:14px">Preço</div>
-          <div class="compare-val" style="flex-direction:column;gap:2px;align-items:center">
-            <span style="font-size:17px;font-weight:800;color:var(--text)">R$ 10/mês</span>
-            <span style="font-size:12px;color:var(--gold)">ou R$ 100/ano</span>
-          </div>
-          <div class="compare-val" style="flex-direction:column;gap:2px;align-items:center">
-            <span style="font-size:17px;font-weight:800;color:var(--text)">R$ 20/mês</span>
-            <span style="font-size:12px;color:var(--gold)">ou R$ 200/ano</span>
-          </div>
-        </div>
-      </div>
-
-
     </div>
   </section>
 
@@ -642,17 +585,17 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Planilha funciona, mas as análises são básicas e limitadas. No Meu Primeiro Milhão você tem previsão automática do milhão, gamificação pra manter consistência, análise com IA no fechamento mensal e newsletter exclusiva com análises de empresas para você avaliar e considerar na diversificação da sua carteira. Coisas que nenhuma planilha entrega. E se você já tem histórico, pode importar direto via Excel: em minutos está com tudo dentro do app sem perder nada.</p>
+            <p>Planilha funciona, mas as análises são básicas e limitadas. No Meu Primeiro Milhão você tem previsão automática do milhão, gamificação pra manter consistência e análise com IA no fechamento mensal. Coisas que nenhuma planilha entrega. E se você já tem histórico, pode importar direto via Excel: em minutos está com tudo dentro do app sem perder nada.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>R$ 10 ou R$ 20 por mês parece caro pra um app.</span>
+            <span>É grátis mesmo? Qual a pegadinha?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Você gasta mais do que isso numa saída. A questão certa não é "R$ 10 é caro?". É: "quanto vale ter clareza sobre onde está o seu patrimônio e quando você vai ser livre financeiramente?" Se o app te ajudar a aumentar seu aporte em R$ 100 por mês, ele já pagou o ano inteiro no primeiro mês. E nos planos anuais você ainda tem 30 dias grátis pra testar sem pagar nada.</p>
+            <p>É grátis mesmo, sem pegadinha. Durante o lançamento, todo o app está liberado: você cria a conta com um email e começa a usar, sem cartão e sem plano. A ideia é simples: quanto mais gente usando e construindo patrimônio, melhor pra todo mundo. Aproveite enquanto está aberto.</p>
           </div>
         </div>
 
@@ -687,9 +630,9 @@
         <h2>Seu primeiro milhão <span>começa hoje.</span></h2>
         <p>Aplique o mesmo método que as maiores empresas usam para criar riqueza, na sua vida pessoal. Fluxo de caixa. Patrimônio. Consistência.</p>
         <div style="display:flex;justify-content:center">
-          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Começar gratuitamente</a>
+          <a href="https://www.meuprimeiromilhao.app.br" class="btn-p lg">Criar conta grátis <span>→</span></a>
         </div>
-        <p class="cta-note">30 dias grátis nos planos anuais · Cancele quando quiser</p>
+        <p class="cta-note">Grátis durante o lançamento · Só precisa de um email</p>
       </div>
     </div>
   </section>
@@ -805,43 +748,6 @@ function trackCalc(dados) {
     });
   }
 })();
-</script>
-<script>
-var isAnual = false;
-function toggleBilling() {
-  isAnual = !isAnual;
-  var btn = document.getElementById('billing-toggle');
-  btn.classList.toggle('on', isAnual);
-
-  var lblM = document.getElementById('lbl-mensal');
-  var lblA = document.getElementById('lbl-anual');
-  lblM.style.color = isAnual ? 'var(--muted)' : 'var(--text)';
-  lblA.style.color = isAnual ? 'var(--text)' : 'var(--muted)';
-
-  if (isAnual) {
-    document.getElementById('basico-riscado').textContent = 'R$ 120/ano';
-    document.getElementById('basico-valor').textContent = 'R$ 100';
-    document.getElementById('basico-per').textContent = '/ano · R$ 8,33/mês';
-    document.getElementById('basico-trial').textContent = '✓ 30 dias grátis';
-    document.getElementById('basico-btn').textContent = 'Começar grátis — Básico';
-    document.getElementById('premium-riscado').textContent = 'R$ 240/ano';
-    document.getElementById('premium-valor').textContent = 'R$ 200';
-    document.getElementById('premium-per').textContent = '/ano · R$ 16,67/mês';
-    document.getElementById('premium-trial').textContent = '✓ 30 dias grátis';
-    document.getElementById('premium-btn').textContent = 'Começar grátis — Premium';
-  } else {
-    document.getElementById('basico-riscado').textContent = '';
-    document.getElementById('basico-valor').textContent = 'R$ 10';
-    document.getElementById('basico-per').textContent = '/mês · cobrado mensalmente';
-    document.getElementById('basico-trial').textContent = '';
-    document.getElementById('basico-btn').textContent = 'Assinar Básico';
-    document.getElementById('premium-riscado').textContent = '';
-    document.getElementById('premium-valor').textContent = 'R$ 20';
-    document.getElementById('premium-per').textContent = '/mês · cobrado mensalmente';
-    document.getElementById('premium-trial').textContent = '';
-    document.getElementById('premium-btn').textContent = 'Assinar Premium';
-  }
-}
 </script>
 <script>
 function toggleFaq(btn) {
